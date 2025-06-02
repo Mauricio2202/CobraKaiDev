@@ -57,85 +57,103 @@ public class PlanificacionClases extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(249, 220, 92));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel5.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(73, 80, 87));
         jLabel5.setText("Nombre de la clase");
 
         jLabel1.setFont(new java.awt.Font("STXihei", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(73, 80, 87));
         jLabel1.setText("Planificación y Ejecución de Clases");
 
         txtNombreClase.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(73, 80, 87));
         jLabel6.setText("Instructor Presente");
 
         cmbInstructorPresente.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(73, 80, 87));
         jLabel7.setText("Rol del Instructor");
 
         cmbRolInstructor.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(73, 80, 87));
         jLabel8.setText("Nivel Técnico");
 
         cmbNivelTecnico.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
-        jLabel9.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(73, 80, 87));
         jLabel9.setText("Modalidad");
 
         cmbModalidad.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
-        jLabel10.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(73, 80, 87));
         jLabel10.setText("Capacidad Máxima de Personas");
 
         Estado.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
-        jLabel11.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(73, 80, 87));
         jLabel11.setText("Estado");
 
         lblCantidadPersonas.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        lblCantidadPersonas.setForeground(new java.awt.Color(221, 221, 221));
         lblCantidadPersonas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        btnIncrementarPersonas.setBackground(new java.awt.Color(247, 127, 0));
+        btnIncrementarPersonas.setForeground(new java.awt.Color(255, 255, 255));
         btnIncrementarPersonas.setText("Ʌ");
         btnIncrementarPersonas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        btnDisminuirPersonas.setBackground(new java.awt.Color(247, 127, 0));
+        btnDisminuirPersonas.setForeground(new java.awt.Color(255, 255, 255));
         btnDisminuirPersonas.setText("V");
         btnDisminuirPersonas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jLabel12.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel12.setForeground(new java.awt.Color(73, 80, 87));
         jLabel12.setText("Fecha de la Clase");
 
         dtFechaClase.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         lblIconCalendar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel13.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(73, 80, 87));
         jLabel13.setText("Reporte de Actividades");
 
         txtAsistenciaConfirmada.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
-        jLabel14.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(73, 80, 87));
         jLabel14.setText("Asistencia Confirmada");
 
         txtReporteActividad.setColumns(20);
-        txtReporteActividad.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        txtReporteActividad.setFont(new java.awt.Font("STXihei", 0, 18)); // NOI18N
         txtReporteActividad.setRows(5);
         jScrollPane1.setViewportView(txtReporteActividad);
 
+        btnCancelarPlanificacion.setBackground(new java.awt.Color(255, 10, 84));
+        btnCancelarPlanificacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCancelarPlanificacion.setForeground(new java.awt.Color(255, 255, 255));
         btnCancelarPlanificacion.setText("Cancelar");
         btnCancelarPlanificacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancelarPlanificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        btnGuardarPlanificacion.setBackground(new java.awt.Color(72, 202, 228));
+        btnGuardarPlanificacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnGuardarPlanificacion.setForeground(new java.awt.Color(255, 255, 255));
         btnGuardarPlanificacion.setText("Guardar");
         btnGuardarPlanificacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnGuardarPlanificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGuardarPlanificacion.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarPlanificacionActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -150,9 +168,9 @@ public class PlanificacionClases extends javax.swing.JFrame {
                         .addGap(21, 21, 21)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnCancelarPlanificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnGuardarPlanificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(btnCancelarPlanificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnGuardarPlanificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addComponent(jLabel5)
@@ -177,8 +195,8 @@ public class PlanificacionClases extends javax.swing.JFrame {
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                             .addGap(21, 21, 21)
                                             .addComponent(jLabel11)
-                                            .addGap(331, 331, 331)
-                                            .addComponent(lblCantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGap(338, 338, 338)
+                                            .addComponent(lblCantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(btnDisminuirPersonas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -221,16 +239,13 @@ public class PlanificacionClases extends javax.swing.JFrame {
                     .addComponent(cmbInstructorPresente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbRolInstructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbNivelTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(18, 18, 18)
-                                    .addComponent(jLabel9))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(27, 27, 27)
-                                    .addComponent(jLabel11)))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel11)
+                                .addComponent(jLabel9))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -240,11 +255,8 @@ public class PlanificacionClases extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(1, 1, 1)
                                     .addComponent(jLabel10))))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(lblCantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblCantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
                         .addComponent(btnIncrementarPersonas)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDisminuirPersonas)))
@@ -263,11 +275,11 @@ public class PlanificacionClases extends javax.swing.JFrame {
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelarPlanificacion)
-                    .addComponent(btnGuardarPlanificacion))
-                .addContainerGap())
+                    .addComponent(btnCancelarPlanificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardarPlanificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -289,10 +301,6 @@ public class PlanificacionClases extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnGuardarPlanificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPlanificacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGuardarPlanificacionActionPerformed
 
     /**
      * @param args the command line arguments

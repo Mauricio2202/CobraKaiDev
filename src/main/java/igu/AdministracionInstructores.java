@@ -38,46 +38,47 @@ public class AdministracionInstructores extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         cmbEstadoInstructor = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
-        txtBuscarEstudiante = new javax.swing.JTextField();
-        btnBuscarInstructor = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        btnGuardarInstructor = new javax.swing.JButton();
-        btnCancelarInstructor = new javax.swing.JButton();
+        btnCancelarAdministracion = new javax.swing.JButton();
+        btnGuardarAdministracion = new javax.swing.JButton();
+        txtBuscarInstructores = new javax.swing.JTextField();
+        btnBuscarInstructores = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(249, 220, 92));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        jLabel5.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(73, 80, 87));
         jLabel5.setText("Fecha de Ingreso");
 
         jLabel1.setFont(new java.awt.Font("STXihei", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(73, 80, 87));
         jLabel1.setText("Administración de Instructores");
 
         dtFechaIngresoInstructor.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         lblIconCalendar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
-        jLabel6.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(73, 80, 87));
         jLabel6.setText("Tipo de Rol");
 
         txtTipoContrato.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(73, 80, 87));
         jLabel7.setText("Tipo de Contrato");
 
         txtTipoRol.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(73, 80, 87));
         jLabel8.setText("Estado");
 
-        txtBuscarEstudiante.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
-
-        btnBuscarInstructor.setText("Buscar");
-        btnBuscarInstructor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnBuscarInstructor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
+        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
@@ -91,18 +92,28 @@ public class AdministracionInstructores extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        btnGuardarInstructor.setText("Guardar");
-        btnGuardarInstructor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnGuardarInstructor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGuardarInstructor.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarInstructorActionPerformed(evt);
-            }
-        });
+        btnCancelarAdministracion.setBackground(new java.awt.Color(255, 10, 84));
+        btnCancelarAdministracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCancelarAdministracion.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelarAdministracion.setText("Cancelar");
+        btnCancelarAdministracion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCancelarAdministracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnCancelarInstructor.setText("Cancelar");
-        btnCancelarInstructor.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCancelarInstructor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarAdministracion.setBackground(new java.awt.Color(72, 202, 228));
+        btnGuardarAdministracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnGuardarAdministracion.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardarAdministracion.setText("Guardar");
+        btnGuardarAdministracion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnGuardarAdministracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        txtBuscarInstructores.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+
+        btnBuscarInstructores.setBackground(new java.awt.Color(247, 127, 0));
+        btnBuscarInstructores.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnBuscarInstructores.setForeground(new java.awt.Color(255, 255, 255));
+        btnBuscarInstructores.setText("Buscar");
+        btnBuscarInstructores.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnBuscarInstructores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -116,8 +127,18 @@ public class AdministracionInstructores extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(31, 31, 31)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnCancelarAdministracion, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnGuardarAdministracion, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jSeparator1)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addGap(41, 41, 41)
+                                    .addComponent(txtBuscarInstructores, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(btnBuscarInstructores, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(jSeparator1))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -139,16 +160,7 @@ public class AdministracionInstructores extends javax.swing.JFrame {
                                             .addComponent(txtTipoRol, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGap(18, 18, 18)
                                             .addComponent(cmbEstadoInstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGap(55, 55, 55)
-                                    .addComponent(txtBuscarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(btnBuscarInstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addComponent(jScrollPane1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(btnCancelarInstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnGuardarInstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(jScrollPane1)))))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -173,18 +185,18 @@ public class AdministracionInstructores extends javax.swing.JFrame {
                         .addComponent(txtTipoRol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(cmbEstadoInstructor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtBuscarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnBuscarInstructor))
-                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtBuscarInstructores, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnBuscarInstructores, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(21, 21, 21)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelarInstructor)
-                    .addComponent(btnGuardarInstructor))
-                .addContainerGap())
+                    .addComponent(btnCancelarAdministracion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardarAdministracion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(16, 16, 16))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -206,10 +218,6 @@ public class AdministracionInstructores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnGuardarInstructorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarInstructorActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGuardarInstructorActionPerformed
 
     /**
      * @param args the command line arguments
@@ -247,9 +255,9 @@ public class AdministracionInstructores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscarInstructor;
-    private javax.swing.JButton btnCancelarInstructor;
-    private javax.swing.JButton btnGuardarInstructor;
+    private javax.swing.JButton btnBuscarInstructores;
+    private javax.swing.JButton btnCancelarAdministracion;
+    private javax.swing.JButton btnGuardarAdministracion;
     private javax.swing.JComboBox<String> cmbEstadoInstructor;
     private com.toedter.calendar.JDateChooser dtFechaIngresoInstructor;
     private javax.swing.JLabel jLabel1;
@@ -262,7 +270,7 @@ public class AdministracionInstructores extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblIconCalendar;
-    private javax.swing.JTextField txtBuscarEstudiante;
+    private javax.swing.JTextField txtBuscarInstructores;
     private javax.swing.JTextField txtTipoContrato;
     private javax.swing.JTextField txtTipoRol;
     // End of variables declaration//GEN-END:variables

@@ -37,27 +37,32 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
         btnBuscarEstudiante = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        btnGuardarEvoEstudiante = new javax.swing.JButton();
-        btnCancelarEvoEstudiante = new javax.swing.JButton();
+        btnCancelarEvo = new javax.swing.JButton();
+        btnGuardarEvo = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(249, 220, 92));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("STXihei", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(73, 80, 87));
         jLabel1.setText("Evolución de Estudiante");
 
-        jLabel5.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(73, 80, 87));
         jLabel5.setText("Fecha de Ingreso");
 
         dtFechaIngreso.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(73, 80, 87));
         jLabel6.setText("Rango Actual");
 
         cmbRangoActual.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
-        jLabel7.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(73, 80, 87));
         jLabel7.setText("Estado");
 
         txtEstado.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
@@ -66,10 +71,15 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
 
         lblIconCalendar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        btnBuscarEstudiante.setBackground(new java.awt.Color(247, 127, 0));
+        btnBuscarEstudiante.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnBuscarEstudiante.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscarEstudiante.setText("Buscar");
         btnBuscarEstudiante.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBuscarEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
+        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jTable1.setForeground(new java.awt.Color(73, 80, 87));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -86,18 +96,19 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
             jTable1.getColumnModel().getColumn(4).setMaxWidth(200);
         }
 
-        btnGuardarEvoEstudiante.setText("Guardar");
-        btnGuardarEvoEstudiante.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnGuardarEvoEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGuardarEvoEstudiante.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarEvoEstudianteActionPerformed(evt);
-            }
-        });
+        btnCancelarEvo.setBackground(new java.awt.Color(255, 10, 84));
+        btnCancelarEvo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCancelarEvo.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelarEvo.setText("Cancelar");
+        btnCancelarEvo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCancelarEvo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnCancelarEvoEstudiante.setText("Cancelar");
-        btnCancelarEvoEstudiante.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCancelarEvoEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarEvo.setBackground(new java.awt.Color(72, 202, 228));
+        btnGuardarEvo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnGuardarEvo.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardarEvo.setText("Guardar");
+        btnGuardarEvo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnGuardarEvo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -134,14 +145,14 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(txtBuscarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnBuscarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnBuscarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(64, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCancelarEvoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btnGuardarEvoEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addComponent(btnCancelarEvo, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuardarEvo, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,21 +173,17 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
                     .addComponent(lblIconCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtBuscarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscarEstudiante))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 79, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCancelarEvoEstudiante)
-                            .addComponent(btnGuardarEvoEstudiante))
-                        .addContainerGap())))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtBuscarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnBuscarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnCancelarEvo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardarEvo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(17, 17, 17))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -198,10 +205,6 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnGuardarEvoEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEvoEstudianteActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGuardarEvoEstudianteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -240,8 +243,8 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBuscarEstudiante;
-    private javax.swing.JButton btnCancelarEvoEstudiante;
-    private javax.swing.JButton btnGuardarEvoEstudiante;
+    private javax.swing.JButton btnCancelarEvo;
+    private javax.swing.JButton btnGuardarEvo;
     private javax.swing.JComboBox<String> cmbRangoActual;
     private com.toedter.calendar.JDateChooser dtFechaIngreso;
     private javax.swing.JLabel jLabel1;

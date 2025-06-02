@@ -31,57 +31,69 @@ public class EspaciosFisicos extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         cmbInstructorPresente = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
-        lblGestionCantPersonas = new javax.swing.JLabel();
-        btnIncrementarPersonasG = new javax.swing.JButton();
-        btnDisminuirPersonasG = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtReporteActividad = new javax.swing.JTextArea();
-        btnCancelarGestionEspacios = new javax.swing.JButton();
-        btnGuardarGestionEspacios = new javax.swing.JButton();
+        btnCancelarGestion = new javax.swing.JButton();
+        btnGuardarGestion = new javax.swing.JButton();
+        btnIncrementarG = new javax.swing.JButton();
+        btnDisminuirG = new javax.swing.JButton();
+        lblCantidadPersonas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(249, 220, 92));
+
         jLabel1.setFont(new java.awt.Font("STXihei", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(73, 80, 87));
         jLabel1.setText("Gestión de Espacios Físicos");
 
-        jLabel5.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel5.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(73, 80, 87));
         jLabel5.setText("Tipo de Espacio");
 
         cmbInstructorPresente.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
-        jLabel6.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(73, 80, 87));
         jLabel6.setText("Capacidad de Personas");
 
-        lblGestionCantPersonas.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
-        lblGestionCantPersonas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-
-        btnIncrementarPersonasG.setText("Ʌ");
-        btnIncrementarPersonasG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        btnDisminuirPersonasG.setText("V");
-        btnDisminuirPersonasG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        jLabel13.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(73, 80, 87));
         jLabel13.setText("Características del Espacio");
 
         txtReporteActividad.setColumns(20);
-        txtReporteActividad.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        txtReporteActividad.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
         txtReporteActividad.setRows(5);
         jScrollPane1.setViewportView(txtReporteActividad);
 
-        btnCancelarGestionEspacios.setText("Cancelar");
-        btnCancelarGestionEspacios.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnCancelarGestionEspacios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarGestion.setBackground(new java.awt.Color(255, 10, 84));
+        btnCancelarGestion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnCancelarGestion.setForeground(new java.awt.Color(255, 255, 255));
+        btnCancelarGestion.setText("Cancelar");
+        btnCancelarGestion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnCancelarGestion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        btnGuardarGestionEspacios.setText("Guardar");
-        btnGuardarGestionEspacios.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnGuardarGestionEspacios.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnGuardarGestionEspacios.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnGuardarGestionEspaciosActionPerformed(evt);
-            }
-        });
+        btnGuardarGestion.setBackground(new java.awt.Color(72, 202, 228));
+        btnGuardarGestion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnGuardarGestion.setForeground(new java.awt.Color(255, 255, 255));
+        btnGuardarGestion.setText("Guardar");
+        btnGuardarGestion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        btnGuardarGestion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnIncrementarG.setBackground(new java.awt.Color(247, 127, 0));
+        btnIncrementarG.setForeground(new java.awt.Color(255, 255, 255));
+        btnIncrementarG.setText("Ʌ");
+        btnIncrementarG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        btnDisminuirG.setBackground(new java.awt.Color(247, 127, 0));
+        btnDisminuirG.setForeground(new java.awt.Color(255, 255, 255));
+        btnDisminuirG.setText("V");
+        btnDisminuirG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        lblCantidadPersonas.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        lblCantidadPersonas.setForeground(new java.awt.Color(221, 221, 221));
+        lblCantidadPersonas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -92,35 +104,33 @@ public class EspaciosFisicos extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(153, 153, 153)
-                                        .addComponent(jLabel1))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(69, 69, 69)
-                                        .addComponent(jLabel5)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cmbInstructorPresente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26)
-                                        .addComponent(jLabel6)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(lblGestionCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(btnDisminuirPersonasG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(btnIncrementarPersonasG)))
+                                .addGap(153, 153, 153)
+                                .addComponent(jLabel1))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(42, 42, 42)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel13))))
-                        .addGap(0, 48, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnCancelarGestionEspacios, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnGuardarGestionEspacios, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                                .addGap(69, 69, 69)
+                                .addComponent(jLabel5)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cmbInstructorPresente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(26, 26, 26)
+                                .addComponent(jLabel6)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblCantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btnDisminuirG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnIncrementarG)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 671, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel13))))
+                .addContainerGap(54, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btnCancelarGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnGuardarGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,30 +139,27 @@ public class EspaciosFisicos extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(15, 15, 15)
                         .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel5)
-                                    .addComponent(cmbInstructorPresente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel6)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(lblGestionCantPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel5)
+                                .addComponent(cmbInstructorPresente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel6))
+                            .addComponent(lblCantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(btnIncrementarPersonasG)
+                        .addGap(53, 53, 53)
+                        .addComponent(btnIncrementarG)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnDisminuirPersonasG)))
-                .addGap(54, 54, 54)
+                        .addComponent(btnDisminuirG)))
+                .addGap(46, 46, 46)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCancelarGestionEspacios)
-                    .addComponent(btnGuardarGestionEspacios))
-                .addContainerGap())
+                    .addComponent(btnCancelarGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnGuardarGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(14, 14, 14))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -174,10 +181,6 @@ public class EspaciosFisicos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnGuardarGestionEspaciosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarGestionEspaciosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnGuardarGestionEspaciosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,10 +218,10 @@ public class EspaciosFisicos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelarGestionEspacios;
-    private javax.swing.JButton btnDisminuirPersonasG;
-    private javax.swing.JButton btnGuardarGestionEspacios;
-    private javax.swing.JButton btnIncrementarPersonasG;
+    private javax.swing.JButton btnCancelarGestion;
+    private javax.swing.JButton btnDisminuirG;
+    private javax.swing.JButton btnGuardarGestion;
+    private javax.swing.JButton btnIncrementarG;
     private javax.swing.JComboBox<String> cmbInstructorPresente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
@@ -226,7 +229,7 @@ public class EspaciosFisicos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblGestionCantPersonas;
+    private javax.swing.JLabel lblCantidadPersonas;
     private javax.swing.JTextArea txtReporteActividad;
     // End of variables declaration//GEN-END:variables
 }
