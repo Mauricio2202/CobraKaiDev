@@ -1,6 +1,8 @@
 
 package igu;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author 52551
@@ -12,6 +14,8 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
      */
     public EvolucionEstudiante() {
         initComponents();
+        this.setLocationRelativeTo(this);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -42,27 +46,27 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(249, 220, 92));
+        jPanel1.setBackground(new java.awt.Color(201, 162, 39));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel1.setFont(new java.awt.Font("STXihei", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel1.setForeground(new java.awt.Color(255, 249, 255));
         jLabel1.setText("Evolución de Estudiante");
 
         jLabel5.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel5.setForeground(new java.awt.Color(242, 242, 242));
         jLabel5.setText("Fecha de Ingreso");
 
         dtFechaIngreso.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel6.setForeground(new java.awt.Color(242, 242, 242));
         jLabel6.setText("Rango Actual");
 
         cmbRangoActual.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel7.setForeground(new java.awt.Color(242, 242, 242));
         jLabel7.setText("Estado");
 
         txtEstado.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N

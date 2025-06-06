@@ -4,6 +4,8 @@
  */
 package igu;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author 52551
@@ -15,6 +17,8 @@ public class AdministracionInstructores extends javax.swing.JFrame {
      */
     public AdministracionInstructores() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -47,7 +51,7 @@ public class AdministracionInstructores extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(249, 220, 92));
+        jPanel1.setBackground(new java.awt.Color(201, 162, 39));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel5.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N

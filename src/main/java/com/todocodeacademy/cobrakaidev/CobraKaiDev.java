@@ -1,13 +1,13 @@
 
 package com.todocodeacademy.cobrakaidev;
 
-import igu.RegistroUsuario;
+import igu.InicioDashboard;
+
 
 public class CobraKaiDev {
 
     public static void main(String[] args) {
-        RegistroUsuario frRegistroUsuario = new RegistroUsuario();
-        frRegistroUsuario.setVisible(true);
-        frRegistroUsuario.setLocationRelativeTo(null);
+        InicioDashboard frInicioDashboard = new InicioDashboard();
+        frInicioDashboard.setVisible(true);
     }
 }

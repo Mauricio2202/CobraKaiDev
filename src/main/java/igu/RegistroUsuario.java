@@ -6,6 +6,7 @@ import java.io.File;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class RegistroUsuario extends javax.swing.JFrame {
@@ -13,6 +14,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
     public RegistroUsuario() {
         initComponents();
         this.setLocationRelativeTo(this);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     @SuppressWarnings("unchecked")
@@ -68,49 +70,50 @@ public class RegistroUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(249, 220, 92));
+        jPanel1.setBackground(new java.awt.Color(201, 162, 39));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jLabel1.setBackground(new java.awt.Color(204, 204, 204));
         jLabel1.setFont(new java.awt.Font("STXihei", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel1.setForeground(new java.awt.Color(242, 242, 242));
         jLabel1.setText("Registro de Usuario");
 
         jLabel2.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel2.setForeground(new java.awt.Color(242, 242, 242));
         jLabel2.setText("Nombre");
 
         txtNombre.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel3.setForeground(new java.awt.Color(242, 242, 242));
         jLabel3.setText("Apellido Paterno");
 
         txtApp.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel4.setForeground(new java.awt.Color(242, 242, 242));
         jLabel4.setText("Apellido Materno");
 
         txtApm.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel5.setForeground(new java.awt.Color(242, 242, 242));
         jLabel5.setText("Fecha de Nacimiento");
 
         jLabel6.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel6.setForeground(new java.awt.Color(242, 242, 242));
         jLabel6.setText("Idioma");
 
         cmbPaisOrigen.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel7.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel7.setForeground(new java.awt.Color(242, 242, 242));
         jLabel7.setText("País Origen");
 
         txtIdioma.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel8.setForeground(new java.awt.Color(242, 242, 242));
         jLabel8.setText("Foto");
 
         btnBuscar.setBackground(new java.awt.Color(247, 127, 0));
@@ -118,7 +121,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         btnBuscar.setForeground(new java.awt.Color(255, 255, 255));
         btnBuscar.setText("Browser");
         btnBuscar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
         btnBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarActionPerformed(evt);
@@ -128,79 +131,79 @@ public class RegistroUsuario extends javax.swing.JFrame {
         lblFoto.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel9.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel9.setForeground(new java.awt.Color(242, 242, 242));
         jLabel9.setText("Estado");
 
         cmbEstado.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel10.setForeground(new java.awt.Color(242, 242, 242));
         jLabel10.setText("Alcaldía o Municipio");
 
         cmbMunicipio.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel11.setForeground(new java.awt.Color(242, 242, 242));
         jLabel11.setText("Código Postal");
 
         cmbCP.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel12.setForeground(new java.awt.Color(242, 242, 242));
         jLabel12.setText("Colonia");
 
         txtColonia.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel13.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel13.setForeground(new java.awt.Color(242, 242, 242));
         jLabel13.setText("Número Exterior");
 
         txtNumExterior.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel14.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel14.setForeground(new java.awt.Color(242, 242, 242));
         jLabel14.setText("Número Interior");
 
         txtNumInterior.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel15.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel15.setForeground(new java.awt.Color(242, 242, 242));
         jLabel15.setText("Teléfono Local");
 
         txtCorreo.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel16.setForeground(new java.awt.Color(242, 242, 242));
         jLabel16.setText("Correo");
 
         txtTelefonoLocal.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel17.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel17.setForeground(new java.awt.Color(242, 242, 242));
         jLabel17.setText("Teléfono Móvil");
 
         txtTelefonoMovil.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel18.setForeground(new java.awt.Color(242, 242, 242));
         jLabel18.setText("el tutor o representante legal");
 
         jLabel19.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel19.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel19.setForeground(new java.awt.Color(242, 242, 242));
         jLabel19.setText("En caso de ser menor de edad,");
 
         jLabel20.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel20.setForeground(new java.awt.Color(242, 242, 242));
         jLabel20.setText("deberá ingresar lo siguiente.");
 
         jLabel21.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel21.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel21.setForeground(new java.awt.Color(242, 242, 242));
         jLabel21.setText("Parentesco");
 
         cmbParentesco.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel22.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel22.setForeground(new java.awt.Color(242, 242, 242));
         jLabel22.setText("Autorización para actividades");
 
         cmbActFisicaIntensa.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
@@ -220,7 +223,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
         jLabel23.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(73, 80, 87));
+        jLabel23.setForeground(new java.awt.Color(242, 242, 242));
         jLabel23.setText("físicas intensas");
 
         lblIconCalendar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
