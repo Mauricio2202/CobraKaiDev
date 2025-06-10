@@ -8,6 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import persistence.RegistroUsuarioDAO;
 
 public class RegistroUsuario extends javax.swing.JFrame {
 
@@ -34,7 +35,6 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         cmbPaisOrigen = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        txtIdioma = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         btnBuscar = new javax.swing.JButton();
         lblFoto = new javax.swing.JLabel();
@@ -67,6 +67,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
         btnGuardar = new javax.swing.JButton();
         jLabel23 = new javax.swing.JLabel();
         lblIconCalendar = new javax.swing.JLabel();
+        cmbIdioma = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -109,8 +110,6 @@ public class RegistroUsuario extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(242, 242, 242));
         jLabel7.setText("País Origen");
-
-        txtIdioma.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(242, 242, 242));
@@ -214,6 +213,11 @@ public class RegistroUsuario extends javax.swing.JFrame {
         btnCancelar.setText("Cancelar");
         btnCancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarActionPerformed(evt);
+            }
+        });
 
         btnGuardar.setBackground(new java.awt.Color(72, 202, 228));
         btnGuardar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -221,6 +225,11 @@ public class RegistroUsuario extends javax.swing.JFrame {
         btnGuardar.setText("Guardar");
         btnGuardar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnGuardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarActionPerformed(evt);
+            }
+        });
 
         jLabel23.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(242, 242, 242));
@@ -250,8 +259,8 @@ public class RegistroUsuario extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(dteFechaNac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(cmbPaisOrigen, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtIdioma, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
-                    .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblFoto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(cmbIdioma, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -365,9 +374,9 @@ public class RegistroUsuario extends javax.swing.JFrame {
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNumInterior, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbParentesco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -438,6 +447,16 @@ public class RegistroUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnBuscarActionPerformed
 
+    private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+        // Aquí debe ir una conexión directa a base de datos y realizar el registro de estudiante
+        RegistroUsuarioDAO metodoRegNombresEstudiantes = new RegistroUsuarioDAO();
+        metodoRegNombresEstudiantes.guardarInformacionPersonal();
+    }//GEN-LAST:event_btnGuardarActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -480,6 +499,7 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cmbActFisicaIntensa;
     private javax.swing.JComboBox<String> cmbCP;
     private javax.swing.JComboBox<String> cmbEstado;
+    private javax.swing.JComboBox<String> cmbIdioma;
     private javax.swing.JComboBox<String> cmbMunicipio;
     private javax.swing.JComboBox<String> cmbPaisOrigen;
     private javax.swing.JComboBox<String> cmbParentesco;
@@ -514,7 +534,6 @@ public class RegistroUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField txtApp;
     private javax.swing.JTextField txtColonia;
     private javax.swing.JTextField txtCorreo;
-    private javax.swing.JTextField txtIdioma;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtNumExterior;
     private javax.swing.JTextField txtNumInterior;

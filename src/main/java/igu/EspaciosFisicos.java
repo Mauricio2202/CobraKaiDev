@@ -5,6 +5,7 @@
 package igu;
 
 import javax.swing.JFrame;
+import persistence.EspaciosFisicosDAO;
 
 /**
  *
@@ -77,6 +78,11 @@ public class EspaciosFisicos extends javax.swing.JFrame {
         btnCancelarGestion.setText("Cancelar");
         btnCancelarGestion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancelarGestion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarGestion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarGestionActionPerformed(evt);
+            }
+        });
 
         btnGuardarGestion.setBackground(new java.awt.Color(72, 202, 228));
         btnGuardarGestion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -84,6 +90,11 @@ public class EspaciosFisicos extends javax.swing.JFrame {
         btnGuardarGestion.setText("Guardar");
         btnGuardarGestion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnGuardarGestion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarGestion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarGestionActionPerformed(evt);
+            }
+        });
 
         btnIncrementarG.setBackground(new java.awt.Color(247, 127, 0));
         btnIncrementarG.setForeground(new java.awt.Color(255, 255, 255));
@@ -185,6 +196,16 @@ public class EspaciosFisicos extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnGuardarGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarGestionActionPerformed
+        // Aquí debe ir una conexión directa a base de datos y realizar el registro de estudiante
+        EspaciosFisicosDAO metodoEspaciosFisicos = new EspaciosFisicosDAO();
+        metodoEspaciosFisicos.guardarEspacio();
+    }//GEN-LAST:event_btnGuardarGestionActionPerformed
+
+    private void btnCancelarGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarGestionActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnCancelarGestionActionPerformed
 
     /**
      * @param args the command line arguments

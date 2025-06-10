@@ -5,6 +5,7 @@
 package igu;
 
 import javax.swing.JFrame;
+import persistence.AdministracionInstructuresDAO;
 
 /**
  *
@@ -102,6 +103,11 @@ public class AdministracionInstructores extends javax.swing.JFrame {
         btnCancelarAdministracion.setText("Cancelar");
         btnCancelarAdministracion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancelarAdministracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarAdministracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarAdministracionActionPerformed(evt);
+            }
+        });
 
         btnGuardarAdministracion.setBackground(new java.awt.Color(72, 202, 228));
         btnGuardarAdministracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -109,6 +115,11 @@ public class AdministracionInstructores extends javax.swing.JFrame {
         btnGuardarAdministracion.setText("Guardar");
         btnGuardarAdministracion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnGuardarAdministracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarAdministracion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarAdministracionActionPerformed(evt);
+            }
+        });
 
         txtBuscarInstructores.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
@@ -222,6 +233,16 @@ public class AdministracionInstructores extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelarAdministracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarAdministracionActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnCancelarAdministracionActionPerformed
+
+    private void btnGuardarAdministracionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarAdministracionActionPerformed
+        // Aquí debe ir una conexión directa a base de datos y realizar el registro de estudiante
+        AdministracionInstructuresDAO metodoAdminInstructores = new AdministracionInstructuresDAO();
+        metodoAdminInstructores.guardarAdminInstructores();
+    }//GEN-LAST:event_btnGuardarAdministracionActionPerformed
 
     /**
      * @param args the command line arguments

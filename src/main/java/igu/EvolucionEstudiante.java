@@ -2,6 +2,7 @@
 package igu;
 
 import javax.swing.JFrame;
+import persistence.EvolucionEstudianteDAO;
 
 /**
  *
@@ -106,6 +107,11 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
         btnCancelarEvo.setText("Cancelar");
         btnCancelarEvo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancelarEvo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarEvo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarEvoActionPerformed(evt);
+            }
+        });
 
         btnGuardarEvo.setBackground(new java.awt.Color(72, 202, 228));
         btnGuardarEvo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -113,6 +119,11 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
         btnGuardarEvo.setText("Guardar");
         btnGuardarEvo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnGuardarEvo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarEvo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarEvoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -210,6 +221,16 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelarEvoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarEvoActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnCancelarEvoActionPerformed
+
+    private void btnGuardarEvoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEvoActionPerformed
+        // Aquí debe ir una conexión directa a base de datos y realizar el registro de estudiante
+        EvolucionEstudianteDAO metodoEvoEstudiante = new EvolucionEstudianteDAO();
+        metodoEvoEstudiante.guardarEvolucionEstudiante();
+    }//GEN-LAST:event_btnGuardarEvoActionPerformed
 
     /**
      * @param args the command line arguments

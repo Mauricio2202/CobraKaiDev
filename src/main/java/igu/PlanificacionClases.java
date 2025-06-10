@@ -5,6 +5,7 @@
 package igu;
 
 import javax.swing.JFrame;
+import persistence.PlanificacionClasesDAO;
 
 /**
  *
@@ -151,6 +152,11 @@ public class PlanificacionClases extends javax.swing.JFrame {
         btnCancelarPlanificacion.setText("Cancelar");
         btnCancelarPlanificacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancelarPlanificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarPlanificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelarPlanificacionActionPerformed(evt);
+            }
+        });
 
         btnGuardarPlanificacion.setBackground(new java.awt.Color(72, 202, 228));
         btnGuardarPlanificacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -158,6 +164,11 @@ public class PlanificacionClases extends javax.swing.JFrame {
         btnGuardarPlanificacion.setText("Guardar");
         btnGuardarPlanificacion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnGuardarPlanificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarPlanificacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGuardarPlanificacionActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -305,6 +316,16 @@ public class PlanificacionClases extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnCancelarPlanificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarPlanificacionActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btnCancelarPlanificacionActionPerformed
+
+    private void btnGuardarPlanificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPlanificacionActionPerformed
+       // Aquí debe ir una conexión directa a base de datos y realizar el registro de estudiante
+       PlanificacionClasesDAO metodoGuardarPlanificacion = new PlanificacionClasesDAO();
+       metodoGuardarPlanificacion.guardarPlanificacion();
+    }//GEN-LAST:event_btnGuardarPlanificacionActionPerformed
 
     /**
      * @param args the command line arguments
