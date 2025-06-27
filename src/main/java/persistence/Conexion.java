@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  * @author 52551
  */
 public class Conexion {
-    private static final String URL = "jdbc:mysql://localhost:3306/db_cobrakai";
+    private static final String URL = "jdbc:mysql://localhost:3306/bdd_cobrakai";
     private static final String USER = "root";
     private static final String PASSWORD = "";
     

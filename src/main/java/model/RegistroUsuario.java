@@ -1,16 +1,17 @@
-
 package model;
+
 
 import java.time.LocalDate;
 
 public class RegistroUsuario {
+
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
     private LocalDate fechaNacimiento;
-    private String paisOrigen;
-    private String idioma;
-    
+    private int paisOrigen;
+    private int idioma;
+
     private String estado;
     private String municipio;
     private String codigoPostal;
@@ -18,20 +19,19 @@ public class RegistroUsuario {
     private String calle;
     private String numeroExterior;
     private String numeroInterior;
-    
+
     private String correo;
     private String telefonoLocal;
     private String telefonoMovil;
-    
+
     private String parentesco;
-    private boolean autorizacionFisicaIntensa;
-    
+    private int autorizacionFisicaId;
     private byte[] foto;
 
     public RegistroUsuario() {
     }
 
-    public RegistroUsuario(String nombre, String apellidoPaterno, String apellidoMaterno, LocalDate fechaNacimiento, String paisOrigen, String idioma, String estado, String municipio, String codigoPostal, String colonia, String calle, String numeroExterior, String numeroInterior, String correo, String telefonoLocal, String telefonoMovil, String parentesco, boolean autorizacionFisicaIntensa, byte[] foto) {
+    public RegistroUsuario(String nombre, String apellidoPaterno, String apellidoMaterno, LocalDate fechaNacimiento, int paisOrigen, int idioma, String estado, String municipio, String codigoPostal, String colonia, String calle, String numeroExterior, String numeroInterior, String correo, String telefonoLocal, String telefonoMovil, String parentesco, int autorizacionFisicaId, byte[] foto) {
         this.nombre = nombre;
         this.apellidoPaterno = apellidoPaterno;
         this.apellidoMaterno = apellidoMaterno;
@@ -49,7 +49,7 @@ public class RegistroUsuario {
         this.telefonoLocal = telefonoLocal;
         this.telefonoMovil = telefonoMovil;
         this.parentesco = parentesco;
-        this.autorizacionFisicaIntensa = autorizacionFisicaIntensa;
+        this.autorizacionFisicaId = autorizacionFisicaId;
         this.foto = foto;
     }
 
@@ -85,19 +85,19 @@ public class RegistroUsuario {
         this.fechaNacimiento = fechaNacimiento;
     }
 
-    public String getPaisOrigen() {
+    public int getPaisOrigen() {
         return paisOrigen;
     }
 
-    public void setPaisOrigen(String paisOrigen) {
+    public void setPaisOrigen(int paisOrigen) {
         this.paisOrigen = paisOrigen;
     }
 
-    public String getIdioma() {
+    public int getIdioma() {
         return idioma;
     }
 
-    public void setIdioma(String idioma) {
+    public void setIdioma(int idioma) {
         this.idioma = idioma;
     }
 
@@ -189,12 +189,12 @@ public class RegistroUsuario {
         this.parentesco = parentesco;
     }
 
-    public boolean isAutorizacionFisicaIntensa() {
-        return autorizacionFisicaIntensa;
+    public int getAutorizacionFisicaId() {
+        return autorizacionFisicaId;
     }
 
-    public void setAutorizacionFisicaIntensa(boolean autorizacionFisicaIntensa) {
-        this.autorizacionFisicaIntensa = autorizacionFisicaIntensa;
+    public void setAutorizacionFisicaId(int autorizacionFisicaId) {
+        this.autorizacionFisicaId = autorizacionFisicaId;
     }
 
     public byte[] getFoto() {
@@ -204,6 +204,7 @@ public class RegistroUsuario {
     public void setFoto(byte[] foto) {
         this.foto = foto;
     }
+
     
     
 }
