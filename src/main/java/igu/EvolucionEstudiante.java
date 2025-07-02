@@ -1,7 +1,13 @@
 
 package igu;
 
+import java.awt.Image;
+import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import persistence.CatalogosDAO;
 import persistence.EvolucionEstudianteDAO;
 
 /**
@@ -15,6 +21,8 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
      */
     public EvolucionEstudiante() {
         initComponents();
+        cargarCombos();
+        configurarTabla();
         this.setLocationRelativeTo(this);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
@@ -35,15 +43,15 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         cmbRangoActual = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
-        txtEstado = new javax.swing.JTextField();
         txtBuscarEstudiante = new javax.swing.JTextField();
         lblIconCalendar = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         btnBuscarEstudiante = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblEvoEstudiante = new javax.swing.JTable();
         btnCancelarEvo = new javax.swing.JButton();
         btnGuardarEvo = new javax.swing.JButton();
+        cmbEstado = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -70,8 +78,6 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
         jLabel7.setForeground(new java.awt.Color(242, 242, 242));
         jLabel7.setText("Estado");
 
-        txtEstado.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
-
         txtBuscarEstudiante.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         lblIconCalendar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -82,10 +88,15 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
         btnBuscarEstudiante.setText("Buscar");
         btnBuscarEstudiante.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBuscarEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarEstudiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarEstudianteActionPerformed(evt);
+            }
+        });
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jTable1.setForeground(new java.awt.Color(73, 80, 87));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblEvoEstudiante.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tblEvoEstudiante.setForeground(new java.awt.Color(73, 80, 87));
+        tblEvoEstudiante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null},
@@ -96,9 +107,9 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
                 "Id", "Nombre", "App", "Apm", "Nacimiento", "Ingreso", "Rango", "Estado", "Foto"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(4).setMaxWidth(200);
+        jScrollPane1.setViewportView(tblEvoEstudiante);
+        if (tblEvoEstudiante.getColumnModel().getColumnCount() > 0) {
+            tblEvoEstudiante.getColumnModel().getColumn(4).setMaxWidth(200);
         }
 
         btnCancelarEvo.setBackground(new java.awt.Color(255, 10, 84));
@@ -125,19 +136,18 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
             }
         });
 
+        cmbEstado.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(230, 230, 230)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(43, 43, 43)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel5)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -150,9 +160,14 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
                                     .addComponent(cmbRangoActual, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(68, 68, 68)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7))))
-                        .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel7)
+                                        .addGap(31, 31, 31))
+                                    .addComponent(cmbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(126, 126, 126))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 643, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(87, 87, 87)
                         .addComponent(txtBuscarEstudiante, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,7 +200,7 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
                     .addComponent(dtFechaIngreso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(cmbRangoActual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(lblIconCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -227,11 +242,133 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarEvoActionPerformed
 
     private void btnGuardarEvoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarEvoActionPerformed
-        // Aquí debe ir una conexión directa a base de datos y realizar el registro de estudiante
         EvolucionEstudianteDAO metodoEvoEstudiante = new EvolucionEstudianteDAO();
         metodoEvoEstudiante.guardarEvolucionEstudiante();
     }//GEN-LAST:event_btnGuardarEvoActionPerformed
 
+    private void btnBuscarEstudianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarEstudianteActionPerformed
+        String busqueda = txtBuscarEstudiante.getText().trim();
+
+    if (busqueda.isEmpty()) {
+        JOptionPane.showMessageDialog(this, 
+            "Ingrese un nombre o apellido para buscar", 
+            "Advertencia", 
+            JOptionPane.WARNING_MESSAGE);
+        txtBuscarEstudiante.requestFocus();
+        return;
+    }
+
+    try {
+        EvolucionEstudianteDAO dao = new EvolucionEstudianteDAO();
+        List<Object[]> resultados = dao.buscarEstudiantes(busqueda);
+
+        if (resultados.isEmpty()) {
+            JOptionPane.showMessageDialog(this, 
+                "No se encontraron estudiantes con: '" + busqueda + "'", 
+                "Resultados", 
+                JOptionPane.INFORMATION_MESSAGE);
+            return;
+        }
+
+        DefaultTableModel modelo = (DefaultTableModel) tblEvoEstudiante.getModel();
+        modelo.setRowCount(0);
+
+        for (Object[] fila : resultados) {
+            ImageIcon foto = (fila[8] != null) ? procesarFoto(fila[8]) : null;
+            
+            modelo.addRow(new Object[]{
+                fila[0], 
+                fila[1], 
+                fila[2],
+                fila[3],
+                formatearFecha(fila[4]),
+                formatearFecha(fila[5]), 
+                fila[6], 
+                fila[7],
+                foto   
+            });
+        }
+
+        ajustarAnchoColumnas();
+        
+        if (tblEvoEstudiante.getColumnCount() > 8) {
+            tblEvoEstudiante.getColumnModel().getColumn(8).setCellRenderer(new ImageRenderer());
+        }
+
+    } catch (Exception ex) {
+        JOptionPane.showMessageDialog(this,
+            "Error al realizar la búsqueda: " + ex.getMessage(),
+            "Error",
+            JOptionPane.ERROR_MESSAGE);
+        ex.printStackTrace();
+    }
+    }//GEN-LAST:event_btnBuscarEstudianteActionPerformed
+
+    
+    private void configurarTabla() {
+    DefaultTableModel modelo = new DefaultTableModel(
+        new Object[][]{},
+        new String[]{"Id", "Nombre", "App", "Apm", "Nacimiento", "Ingreso", "Rango", "Estado", "Foto"}
+    ) {
+        @Override
+        public Class<?> getColumnClass(int columnIndex) {
+            return columnIndex == 8 ? ImageIcon.class : Object.class;
+        }
+    };
+    
+    tblEvoEstudiante.setModel(modelo);
+    
+    // Configuramos el renderizador para la columna de foto
+    tblEvoEstudiante.getColumnModel().getColumn(8).setCellRenderer(new ImageRenderer());
+    
+    tblEvoEstudiante.getColumnModel().getColumn(0).setPreferredWidth(40);  
+    tblEvoEstudiante.getColumnModel().getColumn(8).setPreferredWidth(120);
+}
+    
+    private void cargarCombos() {
+        EvolucionEstudianteDAO dao = new EvolucionEstudianteDAO();
+        
+        for (String estadoActivo : dao.obtenerEstadoActivo()) {
+            cmbEstado.addItem(estadoActivo);
+        }
+    }
+    
+    private ImageIcon procesarFoto(Object fotoData) {
+    if (fotoData == null) {
+        return null;
+    }
+    
+    try {
+        byte[] bytes = (byte[]) fotoData;
+        ImageIcon fotoOriginal = new ImageIcon(bytes);
+        Image imagenEscalada = fotoOriginal.getImage()
+            .getScaledInstance(80, 100, Image.SCALE_SMOOTH);
+        return new ImageIcon(imagenEscalada);
+    } catch (Exception e) {
+        System.err.println("Error al procesar imagen: " + e.getMessage());
+        return null;
+    }
+}
+    
+    private String formatearFecha(Object fecha) {
+    if (fecha == null) {
+        return "No registrada";
+    }
+    return fecha.toString(); 
+}
+    
+    private void ajustarAnchoColumnas() {
+    tblEvoEstudiante.getColumnModel().getColumn(0).setPreferredWidth(50); 
+    tblEvoEstudiante.getColumnModel().getColumn(1).setPreferredWidth(120); 
+    tblEvoEstudiante.getColumnModel().getColumn(2).setPreferredWidth(120); 
+    tblEvoEstudiante.getColumnModel().getColumn(3).setPreferredWidth(120); 
+    tblEvoEstudiante.getColumnModel().getColumn(4).setPreferredWidth(100); 
+    tblEvoEstudiante.getColumnModel().getColumn(5).setPreferredWidth(100); 
+    tblEvoEstudiante.getColumnModel().getColumn(6).setPreferredWidth(100);
+    tblEvoEstudiante.getColumnModel().getColumn(7).setPreferredWidth(80);  
+    tblEvoEstudiante.getColumnModel().getColumn(8).setPreferredWidth(100); 
+}
+    
     /**
      * @param args the command line arguments
      */
@@ -271,6 +408,7 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
     private javax.swing.JButton btnBuscarEstudiante;
     private javax.swing.JButton btnCancelarEvo;
     private javax.swing.JButton btnGuardarEvo;
+    private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JComboBox<String> cmbRangoActual;
     private com.toedter.calendar.JDateChooser dtFechaIngreso;
     private javax.swing.JLabel jLabel1;
@@ -280,9 +418,8 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblIconCalendar;
+    private javax.swing.JTable tblEvoEstudiante;
     private javax.swing.JTextField txtBuscarEstudiante;
-    private javax.swing.JTextField txtEstado;
     // End of variables declaration//GEN-END:variables
 }

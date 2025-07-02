@@ -1,17 +1,15 @@
 package model;
 
-
 import java.time.LocalDate;
 
 public class RegistroUsuario {
-
+    private int id;
     private String nombre;
     private String apellidoPaterno;
     private String apellidoMaterno;
     private LocalDate fechaNacimiento;
-    private int paisOrigen;
     private int idioma;
-
+    private int paisOrigen;
     private String estado;
     private String municipio;
     private String codigoPostal;
@@ -19,192 +17,131 @@ public class RegistroUsuario {
     private String calle;
     private String numeroExterior;
     private String numeroInterior;
-
     private String correo;
     private String telefonoLocal;
     private String telefonoMovil;
-
     private String parentesco;
-    private int autorizacionFisicaId;
+    private int autorizacionFisica;
     private byte[] foto;
 
-    public RegistroUsuario() {
+    public int getId() {
+        return id; 
     }
-
-    public RegistroUsuario(String nombre, String apellidoPaterno, String apellidoMaterno, LocalDate fechaNacimiento, int paisOrigen, int idioma, String estado, String municipio, String codigoPostal, String colonia, String calle, String numeroExterior, String numeroInterior, String correo, String telefonoLocal, String telefonoMovil, String parentesco, int autorizacionFisicaId, byte[] foto) {
-        this.nombre = nombre;
-        this.apellidoPaterno = apellidoPaterno;
-        this.apellidoMaterno = apellidoMaterno;
-        this.fechaNacimiento = fechaNacimiento;
-        this.paisOrigen = paisOrigen;
-        this.idioma = idioma;
-        this.estado = estado;
-        this.municipio = municipio;
-        this.codigoPostal = codigoPostal;
-        this.colonia = colonia;
-        this.calle = calle;
-        this.numeroExterior = numeroExterior;
-        this.numeroInterior = numeroInterior;
-        this.correo = correo;
-        this.telefonoLocal = telefonoLocal;
-        this.telefonoMovil = telefonoMovil;
-        this.parentesco = parentesco;
-        this.autorizacionFisicaId = autorizacionFisicaId;
-        this.foto = foto;
+    public void setId(int id) { 
+        this.id = id;
     }
-
-    public String getNombre() {
+    public String getNombre() { 
         return nombre;
     }
-
     public void setNombre(String nombre) {
-        this.nombre = nombre;
+        this.nombre = nombre; 
     }
-
-    public String getApellidoPaterno() {
+    public String getApellidoPaterno() { 
         return apellidoPaterno;
     }
-
-    public void setApellidoPaterno(String apellidoPaterno) {
+    public void setApellidoPaterno(String apellidoPaterno) { 
         this.apellidoPaterno = apellidoPaterno;
     }
-
-    public String getApellidoMaterno() {
-        return apellidoMaterno;
+    public String getApellidoMaterno() { 
+        return apellidoMaterno; 
     }
-
     public void setApellidoMaterno(String apellidoMaterno) {
-        this.apellidoMaterno = apellidoMaterno;
+        this.apellidoMaterno = apellidoMaterno; 
     }
-
     public LocalDate getFechaNacimiento() {
         return fechaNacimiento;
     }
-
     public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+        this.fechaNacimiento = fechaNacimiento; 
     }
-
+    public int getIdioma() { 
+        return idioma; 
+    }
+    public void setIdioma(int idioma) {
+        this.idioma = idioma; 
+    }
     public int getPaisOrigen() {
         return paisOrigen;
     }
-
     public void setPaisOrigen(int paisOrigen) {
         this.paisOrigen = paisOrigen;
     }
-
-    public int getIdioma() {
-        return idioma;
-    }
-
-    public void setIdioma(int idioma) {
-        this.idioma = idioma;
-    }
-
     public String getEstado() {
-        return estado;
+        return estado; 
     }
-
-    public void setEstado(String estado) {
+    public void setEstado(String estado) { 
         this.estado = estado;
     }
-
     public String getMunicipio() {
         return municipio;
     }
-
     public void setMunicipio(String municipio) {
         this.municipio = municipio;
     }
-
-    public String getCodigoPostal() {
-        return codigoPostal;
+    public String getCodigoPostal() { 
+        return codigoPostal; 
     }
-
     public void setCodigoPostal(String codigoPostal) {
-        this.codigoPostal = codigoPostal;
+        this.codigoPostal = codigoPostal; 
     }
-
     public String getColonia() {
-        return colonia;
+        return colonia; 
     }
-
     public void setColonia(String colonia) {
-        this.colonia = colonia;
+        this.colonia = colonia; 
     }
-
-    public String getCalle() {
+    public String getCalle() { 
         return calle;
     }
-
     public void setCalle(String calle) {
-        this.calle = calle;
+        this.calle = calle; 
     }
-
-    public String getNumeroExterior() {
-        return numeroExterior;
+    public String getNumeroExterior() { 
+        return numeroExterior; 
     }
-
     public void setNumeroExterior(String numeroExterior) {
-        this.numeroExterior = numeroExterior;
+        this.numeroExterior = numeroExterior; 
     }
-
     public String getNumeroInterior() {
-        return numeroInterior;
+        return numeroInterior; 
     }
-
     public void setNumeroInterior(String numeroInterior) {
-        this.numeroInterior = numeroInterior;
+        this.numeroInterior = numeroInterior; 
     }
-
     public String getCorreo() {
-        return correo;
+        return correo; 
     }
-
     public void setCorreo(String correo) {
         this.correo = correo;
     }
-
     public String getTelefonoLocal() {
-        return telefonoLocal;
+        return telefonoLocal; 
     }
-
     public void setTelefonoLocal(String telefonoLocal) {
         this.telefonoLocal = telefonoLocal;
     }
-
     public String getTelefonoMovil() {
-        return telefonoMovil;
+        return telefonoMovil; 
     }
-
     public void setTelefonoMovil(String telefonoMovil) {
         this.telefonoMovil = telefonoMovil;
     }
-
-    public String getParentesco() {
-        return parentesco;
+    public String getParentesco() { 
+        return parentesco; 
     }
-
     public void setParentesco(String parentesco) {
         this.parentesco = parentesco;
     }
-
-    public int getAutorizacionFisicaId() {
-        return autorizacionFisicaId;
+    public int getAutorizacionFisica() {
+        return autorizacionFisica;
     }
-
-    public void setAutorizacionFisicaId(int autorizacionFisicaId) {
-        this.autorizacionFisicaId = autorizacionFisicaId;
+    public void setAutorizacionFisica(int autorizacionFisica) { 
+        this.autorizacionFisica = autorizacionFisica;
     }
-
-    public byte[] getFoto() {
-        return foto;
+    public byte[] getFoto() { 
+        return foto; 
     }
-
     public void setFoto(byte[] foto) {
-        this.foto = foto;
+        this.foto = foto; 
     }
-
-    
-    
 }

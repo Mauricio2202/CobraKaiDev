@@ -15,7 +15,6 @@ public class AdministracionInstructores extends javax.swing.JFrame {
      */
     public AdministracionInstructores() {
         initComponents();
-        setExtendedState(AdministracionInstructores.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }

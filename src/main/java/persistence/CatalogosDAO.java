@@ -51,6 +51,8 @@ public class CatalogosDAO {
     }
     return lista;
 }
+    
+    
 
 public List<String> obtenerMunicipios() {
     List<String> lista = new ArrayList<>();
@@ -112,5 +114,42 @@ public List<String> obtenerAutorizaciones() {
         return lista;
     }
 
+public int obtenerIdPorNombre(String tabla, String columnaId, String columnaNombre, String nombre) throws SQLException {
+    String sql = "SELECT " + columnaId + " FROM " + tabla + " WHERE " + columnaNombre + " = ?";
+    
+    System.out.println("Ejecutando consulta: " + sql); 
+    System.out.println("Buscando: " + nombre + " en tabla " + tabla); 
+    
+    try (Connection con = Conexion.getConexion();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+        ps.setString(1, nombre);
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                int id = rs.getInt(columnaId);
+                System.out.println("Encontrado ID: " + id); 
+                return id;
+            } else {
+                System.err.println("No se encontró '" + nombre + "' en la tabla " + tabla);
+                System.err.println("Valores existentes en la tabla:");
+                listarValoresTabla(tabla, columnaNombre); 
+                throw new SQLException("No se encontró '" + nombre + "' en la tabla " + tabla);
+            }
+        }
+    }
+}
 
+// Método adicional para debug
+private void listarValoresTabla(String tabla, String columnaNombre) {
+    String sql = "SELECT " + columnaNombre + " FROM " + tabla;
+    try (Connection con = Conexion.getConexion();
+         Statement stmt = con.createStatement();
+         ResultSet rs = stmt.executeQuery(sql)) {
+        System.err.println("Valores en " + tabla + ":");
+        while (rs.next()) {
+            System.err.println("- " + rs.getString(columnaNombre));
+        }
+    } catch (SQLException e) {
+        System.err.println("Error al listar valores: " + e.getMessage());
+    }
+}
 }

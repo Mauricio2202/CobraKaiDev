@@ -2,21 +2,18 @@ package persistence;
 
 import model.RegistroUsuario;
 import java.sql.*;
-import javax.swing.JOptionPane;
 
 public class RegistroUsuarioDAO {
-
-    public void guardarDatosPersonales(RegistroUsuario usuario) {
-        String sql = "INSERT INTO tbl_persona (Nombre, App, Apm, Fecha_Nacimiento, Idioma, Pais_Origen, Estado, Municipio, Codigo_Postal, Colonia, Calle, Numero_Exterior, Numero_Interior, Correo, Telefono_Local, Telefono_Movil, Parentesco, Autorizacion_Fisica, Foto) "
-                   + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
+    public boolean guardarDatosPersonales(RegistroUsuario usuario) {
+        String sql = "INSERT INTO tbl_persona (Nombre, App, Apm, Fecha_Nacimiento, Idioma, Pais_Origen, Estado, Municipio, Codigo_Postal, Colonia, Calle, Numero_Exterior, Numero_Interior, Correo, Telefono_Local, Telefono_Movil, Parentesco, Autorizacion_Fisica, Foto) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        
         try (Connection con = Conexion.getConexion();
-             PreparedStatement ps = con.prepareStatement(sql)) {
-
+             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+            
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getApellidoPaterno());
             ps.setString(3, usuario.getApellidoMaterno());
-            ps.setDate(4, java.sql.Date.valueOf(usuario.getFechaNacimiento()));
+            ps.setDate(4, Date.valueOf(usuario.getFechaNacimiento()));
             ps.setInt(5, usuario.getIdioma());
             ps.setInt(6, usuario.getPaisOrigen());
             ps.setString(7, usuario.getEstado());
@@ -30,14 +27,24 @@ public class RegistroUsuarioDAO {
             ps.setString(15, usuario.getTelefonoLocal());
             ps.setString(16, usuario.getTelefonoMovil());
             ps.setString(17, usuario.getParentesco());
-            ps.setInt(18, usuario.getAutorizacionFisicaId());
+            ps.setInt(18, usuario.getAutorizacionFisica());
             ps.setBytes(19, usuario.getFoto());
 
-            ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Datos guardados correctamente.");
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al insertar los datos: " + ex.getMessage());
+            int filasAfectadas = ps.executeUpdate();
+            
+            if (filasAfectadas > 0) {
+                try (ResultSet generatedKeys = ps.getGeneratedKeys()) {
+                    if (generatedKeys.next()) {
+                        usuario.setId(generatedKeys.getInt(1));
+                    }
+                }
+                return true;
+            }
+            return false;
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

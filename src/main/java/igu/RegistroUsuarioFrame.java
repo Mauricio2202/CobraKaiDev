@@ -1,5 +1,6 @@
 
 package igu;
+import java.awt.Color;
 import model.RegistroUsuario;
 import java.awt.Dimension;
 import java.awt.Image;
@@ -17,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import model.ItemCombo;
 import persistence.CatalogosDAO;
 import persistence.RegistroUsuarioDAO;
 
@@ -26,7 +28,7 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
     public RegistroUsuarioFrame() {
         initComponents();
         cargarCombos();
-        
+                
 
         JScrollPane scrollPane = new JScrollPane(pnlRegistroUsuario);
         scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
@@ -109,6 +111,14 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
         btnBuscarFoto.setText("Foto");
         btnBuscarFoto.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBuscarFoto.setCursor(new java.awt.Cursor(java.awt.Cursor.WAIT_CURSOR));
+        btnBuscarFoto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBuscarFotoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarFotoMouseExited(evt);
+            }
+        });
         btnBuscarFoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarFotoActionPerformed(evt);
@@ -150,6 +160,14 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
         jLabel2.setText("Nombre");
 
         txtNombre.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        txtNombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNombreMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtNombreMouseExited(evt);
+            }
+        });
 
         jLabel3.setBackground(new java.awt.Color(204, 204, 204));
         jLabel3.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
@@ -157,6 +175,14 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
         jLabel3.setText("Apellido Paterno");
 
         txtApellidoPaterno.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        txtApellidoPaterno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtApellidoPaternoMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtApellidoPaternoMouseExited(evt);
+            }
+        });
 
         jLabel4.setBackground(new java.awt.Color(204, 204, 204));
         jLabel4.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
@@ -164,6 +190,14 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
         jLabel4.setText("Apellido Materno");
 
         txtApellidoMaterno.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        txtApellidoMaterno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtApellidoMaternoMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtApellidoMaternoMouseExited(evt);
+            }
+        });
 
         jLabel5.setBackground(new java.awt.Color(204, 204, 204));
         jLabel5.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
@@ -175,14 +209,17 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(242, 242, 242));
         jLabel6.setText("País Origen");
 
-        cmbPaisOrigen.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        cmbPaisOrigen.setFont(new java.awt.Font("STXihei", 0, 12));
+        cmbPaisOrigen.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbPaisOrigenMouseClicked(evt);
+            }
+        });
 
         jLabel7.setBackground(new java.awt.Color(204, 204, 204));
         jLabel7.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(242, 242, 242));
         jLabel7.setText("Idioma");
-
-        cmbIdioma.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -206,7 +243,7 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
                             .addComponent(cmbIdioma, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
-                                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(0, 104, Short.MAX_VALUE))
                             .addComponent(txtApellidoPaterno, javax.swing.GroupLayout.Alignment.LEADING))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -241,7 +278,7 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbPaisOrigen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmbIdioma, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(201, 162, 39));
@@ -274,6 +311,14 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
         jLabel11.setText("Colonia");
 
         txtColonia.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        txtColonia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtColoniaMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtColoniaMouseExited(evt);
+            }
+        });
 
         jLabel12.setBackground(new java.awt.Color(204, 204, 204));
         jLabel12.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
@@ -281,6 +326,14 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
         jLabel12.setText("Calle");
 
         txtCalle.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        txtCalle.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCalleMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtCalleMouseExited(evt);
+            }
+        });
 
         jLabel13.setBackground(new java.awt.Color(204, 204, 204));
         jLabel13.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
@@ -288,6 +341,14 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
         jLabel13.setText("Número Exterior");
 
         txtNumExterior.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        txtNumExterior.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNumExteriorMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtNumExteriorMouseExited(evt);
+            }
+        });
 
         jLabel14.setBackground(new java.awt.Color(204, 204, 204));
         jLabel14.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
@@ -295,6 +356,14 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
         jLabel14.setText("Número Interior");
 
         txtNumInterior.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        txtNumInterior.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtNumInteriorMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtNumInteriorMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -372,6 +441,14 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
                 txtCorreoCaretUpdate(evt);
             }
         });
+        txtCorreo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtCorreoMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtCorreoMouseExited(evt);
+            }
+        });
 
         jLabel16.setBackground(new java.awt.Color(204, 204, 204));
         jLabel16.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
@@ -384,6 +461,14 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
                 txtTelLocalCaretUpdate(evt);
             }
         });
+        txtTelLocal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTelLocalMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtTelLocalMouseExited(evt);
+            }
+        });
 
         jLabel17.setBackground(new java.awt.Color(204, 204, 204));
         jLabel17.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
@@ -394,6 +479,14 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
         txtTelMovil.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtTelMovilCaretUpdate(evt);
+            }
+        });
+        txtTelMovil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTelMovilMouseClicked(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                txtTelMovilMouseExited(evt);
             }
         });
 
@@ -587,50 +680,118 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-         if (txtNombre.getText().isEmpty() || txtApellidoPaterno.getText().isEmpty() || 
-        dateChooser.getDate() == null || cmbPaisOrigen.getSelectedIndex() == -1 || 
-        cmbIdioma.getSelectedIndex() == -1) {
-        JOptionPane.showMessageDialog(this, "Por favor complete todos los campos obligatorios.");
+        if (!validarCampos()) {
         return;
     }
 
-    CatalogosDAO catalogosDAO = new CatalogosDAO();
+    try {
+        CatalogosDAO catalogosDAO = new CatalogosDAO();
+        int idPais = catalogosDAO.obtenerIdPorNombre("paises", "id", "nombre", cmbPaisOrigen.getSelectedItem().toString());
+        int idIdioma = catalogosDAO.obtenerIdPorNombre("idiomas", "id", "nombre", cmbIdioma.getSelectedItem().toString());
+        int idAutorizacion = 1; // Valor por defecto para autorización
+
+        byte[] fotoBytes = null;
+        if (!txtNombreFoto.getText().isEmpty()) {
+            File imgFile = new File(txtNombreFoto.getText());
+            FileInputStream fis = new FileInputStream(imgFile);
+            fotoBytes = fis.readAllBytes();
+            fis.close();
+        }
+
+        // Hacemos uso de todas las variables del frame RegistroUsuario (Estudiante)
+        RegistroUsuario usuario = new RegistroUsuario();
+        usuario.setNombre(txtNombre.getText());
+        usuario.setApellidoPaterno(txtApellidoPaterno.getText());
+        usuario.setApellidoMaterno(txtApellidoMaterno.getText());
+        usuario.setFechaNacimiento(dateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        usuario.setPaisOrigen(idPais);
+        usuario.setIdioma(idIdioma);
+        usuario.setEstado(cmbDireccionEstado.getSelectedItem().toString());
+        usuario.setMunicipio(cmbMunicipio.getSelectedItem().toString());
+        usuario.setCodigoPostal(cmbCP.getSelectedItem().toString());
+        usuario.setColonia(txtColonia.getText());
+        usuario.setCalle(txtCalle.getText());
+        usuario.setNumeroExterior(txtNumExterior.getText());
+        usuario.setNumeroInterior(txtNumInterior.getText());
+        usuario.setCorreo(txtCorreo.getText());
+        usuario.setTelefonoLocal(txtTelLocal.getText());
+        usuario.setTelefonoMovil(txtTelMovil.getText());
+        usuario.setParentesco(cmbParentesco.getSelectedItem().toString());
+        usuario.setAutorizacionFisica(idAutorizacion);
+        usuario.setFoto(fotoBytes);
+
+        RegistroUsuarioDAO dao = new RegistroUsuarioDAO();
+        if (dao.guardarDatosPersonales(usuario)) {
+            JOptionPane.showMessageDialog(this, "Registro guardado exitosamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCampos();
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al guardar el registro", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        e.printStackTrace();
+    }
+}
     
-    byte[] fotoBytes = null;
+    // Método para validar el campo de ingreso de nombre, apellido paterno y fecha de nacimiento por medio de if
+
+private boolean validarCampos() {
+    if (txtNombre.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El nombre es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+        txtNombre.requestFocus();
+        return false;
+    }
+    if (txtApellidoPaterno.getText().trim().isEmpty()) {
+        JOptionPane.showMessageDialog(this, "El apellido paterno es obligatorio", "Error", JOptionPane.ERROR_MESSAGE);
+        txtApellidoPaterno.requestFocus();
+        return false;
+    }
+    if (dateChooser.getDate() == null) {
+        JOptionPane.showMessageDialog(this, "La fecha de nacimiento es obligatoria", "Error", JOptionPane.ERROR_MESSAGE);
+        return false;
+    }
+    return true;
+}
+
+// Método para limpiar los campos una vez sea registrado el estudiante
+
+private void limpiarCampos() {
+    txtNombre.setText("");
+    txtApellidoPaterno.setText("");
+    txtApellidoMaterno.setText("");
+    dateChooser.setDate(null);
+    cmbPaisOrigen.setSelectedIndex(-1);
+    cmbIdioma.setSelectedIndex(-1);
+    cmbDireccionEstado.setSelectedIndex(-1);
+    cmbMunicipio.setSelectedIndex(-1);
+    cmbCP.setSelectedIndex(-1);
+    txtColonia.setText("");
+    txtCalle.setText("");
+    txtNumExterior.setText("");
+    txtNumInterior.setText("");
+    txtCorreo.setText("");
+    txtTelLocal.setText("");
+    txtTelMovil.setText("");
+    cmbParentesco.setSelectedIndex(-1);
+    txtNombreFoto.setText("");
+}
+
+private byte[] obtenerFotoBytes() {
+    if (txtNombreFoto.getText().isEmpty()) {
+        return null;
+    }
+    
     try {
         File imgFile = new File(txtNombreFoto.getText());
         FileInputStream fis = new FileInputStream(imgFile);
-        fotoBytes = fis.readAllBytes();
+        byte[] fotoBytes = fis.readAllBytes();
         fis.close();
+        return fotoBytes;
     } catch (Exception e) {
-        JOptionPane.showMessageDialog(this, "Error al leer la foto.");
-        return;
+        JOptionPane.showMessageDialog(this, "Error al leer la foto: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        return null;
     }
-
-    model.RegistroUsuario usuario = new model.RegistroUsuario();
-
-    usuario.setNombre(txtNombre.getText());
-    usuario.setApellidoPaterno(txtApellidoPaterno.getText());
-    usuario.setApellidoMaterno(txtApellidoMaterno.getText());
-    usuario.setFechaNacimiento(dateChooser.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
-    usuario.setPaisOrigen(cmbPaisOrigen.getSelectedIndex());
-    usuario.setIdioma(cmbIdioma.getSelectedIndex());
-    usuario.setEstado(cmbDireccionEstado.getSelectedItem().toString());
-    usuario.setMunicipio(cmbMunicipio.getSelectedItem().toString());
-    usuario.setCodigoPostal(cmbCP.getSelectedItem().toString());
-    usuario.setColonia(txtColonia.getText());
-    usuario.setCalle(txtCalle.getText());
-    usuario.setNumeroExterior(txtNumExterior.getText());
-    usuario.setNumeroInterior(txtNumInterior.getText());
-    usuario.setCorreo(txtCorreo.getText());
-    usuario.setTelefonoLocal(txtTelLocal.getText());
-    usuario.setTelefonoMovil(txtTelMovil.getText());
-    usuario.setParentesco(cmbParentesco.getSelectedItem().toString());
-    usuario.setFoto(fotoBytes);
-
-    // Guardar
-    RegistroUsuarioDAO dao = new RegistroUsuarioDAO();
-    dao.guardarDatosPersonales(usuario);
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -674,6 +835,98 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCorreoCaretUpdate
 
+    private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
+        txtNombre.setBackground(new Color(173, 181, 189));
+    }//GEN-LAST:event_txtNombreMouseClicked
+
+    private void txtNombreMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseExited
+        txtNombre.setBackground(new Color(248, 249, 250));
+    }//GEN-LAST:event_txtNombreMouseExited
+
+    private void txtApellidoPaternoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtApellidoPaternoMouseClicked
+        txtApellidoPaterno.setBackground(new Color(173, 181, 189));
+    }//GEN-LAST:event_txtApellidoPaternoMouseClicked
+
+    private void txtApellidoPaternoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtApellidoPaternoMouseExited
+        txtApellidoPaterno.setBackground(new Color(248, 249, 250));
+    }//GEN-LAST:event_txtApellidoPaternoMouseExited
+
+    private void txtApellidoMaternoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtApellidoMaternoMouseClicked
+        txtApellidoMaterno.setBackground(new Color(173, 181, 189));
+    }//GEN-LAST:event_txtApellidoMaternoMouseClicked
+
+    private void txtApellidoMaternoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtApellidoMaternoMouseExited
+        txtApellidoMaterno.setBackground(new Color(248, 249, 250));
+    }//GEN-LAST:event_txtApellidoMaternoMouseExited
+
+    private void cmbPaisOrigenMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbPaisOrigenMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbPaisOrigenMouseClicked
+
+    private void txtColoniaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtColoniaMouseClicked
+        txtColonia.setBackground(new Color(173, 181, 189));
+    }//GEN-LAST:event_txtColoniaMouseClicked
+
+    private void txtColoniaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtColoniaMouseExited
+        txtColonia.setBackground(new Color(248, 249, 250));
+    }//GEN-LAST:event_txtColoniaMouseExited
+
+    private void txtCalleMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCalleMouseClicked
+        txtCalle.setBackground(new Color(173, 181, 189));
+    }//GEN-LAST:event_txtCalleMouseClicked
+
+    private void txtCalleMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCalleMouseExited
+        txtCalle.setBackground(new Color(248, 249, 250));
+    }//GEN-LAST:event_txtCalleMouseExited
+
+    private void txtNumExteriorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNumExteriorMouseClicked
+        txtNumExterior.setBackground(new Color(173, 181, 189));
+    }//GEN-LAST:event_txtNumExteriorMouseClicked
+
+    private void txtNumExteriorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNumExteriorMouseExited
+        txtNumExterior.setBackground(new Color(248, 249, 250));
+    }//GEN-LAST:event_txtNumExteriorMouseExited
+
+    private void txtNumInteriorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNumInteriorMouseClicked
+        txtNumInterior.setBackground(new Color(173, 181, 189));
+    }//GEN-LAST:event_txtNumInteriorMouseClicked
+
+    private void txtNumInteriorMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNumInteriorMouseExited
+        txtNumInterior.setBackground(new Color(248, 249, 250));
+    }//GEN-LAST:event_txtNumInteriorMouseExited
+
+    private void txtCorreoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCorreoMouseClicked
+        txtCorreo.setBackground(new Color(173, 181, 189));
+    }//GEN-LAST:event_txtCorreoMouseClicked
+
+    private void txtCorreoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtCorreoMouseExited
+        txtCorreo.setBackground(new Color(248, 249, 250));
+    }//GEN-LAST:event_txtCorreoMouseExited
+
+    private void txtTelLocalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelLocalMouseClicked
+        txtTelLocal.setBackground(new Color(173, 181, 189));
+    }//GEN-LAST:event_txtTelLocalMouseClicked
+
+    private void txtTelLocalMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelLocalMouseExited
+        txtTelLocal.setBackground(new Color(248, 249, 250));
+    }//GEN-LAST:event_txtTelLocalMouseExited
+
+    private void txtTelMovilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelMovilMouseClicked
+        txtTelMovil.setBackground(new Color(173, 181, 189));
+    }//GEN-LAST:event_txtTelMovilMouseClicked
+
+    private void txtTelMovilMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTelMovilMouseExited
+        txtTelMovil.setBackground(new Color(248, 249, 250));
+    }//GEN-LAST:event_txtTelMovilMouseExited
+
+    private void btnBuscarFotoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarFotoMouseEntered
+        btnBuscarFoto.setBackground(new Color(154, 3, 30));
+    }//GEN-LAST:event_btnBuscarFotoMouseEntered
+
+    private void btnBuscarFotoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarFotoMouseExited
+        btnBuscarFoto.setBackground(new Color(247,127,0));
+    }//GEN-LAST:event_btnBuscarFotoMouseExited
+
     private void cargarCombos() {
         
     CatalogosDAO dao = new CatalogosDAO();
@@ -706,6 +959,8 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
         cmbAutorizacionActFisica.addItem(aut);
     }
 }
+
+
 
     
     /**
