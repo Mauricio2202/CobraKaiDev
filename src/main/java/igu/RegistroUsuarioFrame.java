@@ -133,6 +133,11 @@ public class RegistroUsuarioFrame extends javax.swing.JFrame {
         btnCancelar.setText("Cancelar");
         btnCancelar.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancelar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancelarMouseEntered(evt);
+            }
+        });
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -926,6 +931,10 @@ private byte[] obtenerFotoBytes() {
     private void btnBuscarFotoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarFotoMouseExited
         btnBuscarFoto.setBackground(new Color(247,127,0));
     }//GEN-LAST:event_btnBuscarFotoMouseExited
+
+    private void btnCancelarMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarMouseEntered
+        JOptionPane.showMessageDialog(null, "Se bloquea botón por falla en pruebas");
+    }//GEN-LAST:event_btnCancelarMouseEntered
 
     private void cargarCombos() {
         

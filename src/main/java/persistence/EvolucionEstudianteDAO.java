@@ -36,7 +36,7 @@ public class EvolucionEstudianteDAO {
 }
     
     public void guardarEvolucionEstudiante() {
-        JOptionPane.showMessageDialog(null, "Evolución de estudiante guardada");
+        JOptionPane.showMessageDialog(null, "Este es un defecto que hay que corregir");
     }
     
     public List<Object[]> buscarEstudiantes(String busqueda) {
@@ -72,7 +72,7 @@ public class EvolucionEstudianteDAO {
         }
     } catch (SQLException e) {
         e.printStackTrace();
-        throw new RuntimeException("Error al buscar estudiantes: " + e.getMessage());
+        throw new RuntimeException("El estudiante no está inscrito: " + e.getMessage());
     }
     return resultados;
 }

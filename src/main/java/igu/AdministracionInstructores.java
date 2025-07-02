@@ -1,7 +1,12 @@
 
 package igu;
 
+import java.awt.Color;
+import java.util.List;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import persistence.AdministracionInstructuresDAO;
 
 /**
@@ -13,11 +18,57 @@ public class AdministracionInstructores extends javax.swing.JFrame {
     /**
      * Creates new form AdministracionInstructores
      */
+    private void configurarTablaInstructores() {
+        tableInstructures.getColumnModel().getColumn(9)
+        .setCellRenderer(new InstructorImageRenderer());
+}
     public AdministracionInstructores() {
         initComponents();
+        cargarEstadosActivos();
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        configurarTablaInstructores();
+    
+        btnBuscarInstructores.addActionListener(e -> buscarInstructores());
     }
+    
+    private void cargarEstadosActivos() {
+    try {
+        List<String> estados = new AdministracionInstructuresDAO().obtenerEstadosActivos();
+        DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
+        
+        estados.forEach(modelo::addElement);
+        cmbEstadoInstructor.setModel(modelo);
+        
+        if (modelo.getSize() > 0) {
+            cmbEstadoInstructor.setSelectedIndex(0);
+        }
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this,
+            "Error al cargar estados: " + e.getMessage(),
+            "Error",
+            JOptionPane.ERROR_MESSAGE);
+    }
+}
+    
+    private void buscarInstructores() {
+    String busqueda = txtBuscarInstructores.getText().trim();
+    
+    if (!busqueda.startsWith("Instructor ")) {
+        JOptionPane.showMessageDialog(this,
+            "Debe comenzar con 'Instructor '",
+            "Formato incorrecto",
+            JOptionPane.WARNING_MESSAGE);
+        return;
+    }
+
+    DefaultTableModel modelo = (DefaultTableModel) tableInstructures.getModel();
+    modelo.setRowCount(0);
+    
+    new AdministracionInstructuresDAO()
+        .buscarInstructores(busqueda)
+        .forEach(modelo::addRow);
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -41,7 +92,7 @@ public class AdministracionInstructores extends javax.swing.JFrame {
         cmbEstadoInstructor = new javax.swing.JComboBox<>();
         jSeparator1 = new javax.swing.JSeparator();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableInstructures = new javax.swing.JTable();
         btnCancelarAdministracion = new javax.swing.JButton();
         btnGuardarAdministracion = new javax.swing.JButton();
         txtBuscarInstructores = new javax.swing.JTextField();
@@ -69,19 +120,31 @@ public class AdministracionInstructores extends javax.swing.JFrame {
         jLabel6.setText("Tipo de Rol");
 
         txtTipoContrato.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        txtTipoContrato.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTipoContratoMouseClicked(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(73, 80, 87));
         jLabel7.setText("Tipo de Contrato");
 
         txtTipoRol.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        txtTipoRol.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                txtTipoRolMouseClicked(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(73, 80, 87));
         jLabel8.setText("Estado");
 
-        jTable1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableInstructures.setBackground(new java.awt.Color(0, 8, 20));
+        tableInstructures.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tableInstructures.setForeground(new java.awt.Color(255, 255, 255));
+        tableInstructures.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null, null, null},
@@ -92,7 +155,7 @@ public class AdministracionInstructores extends javax.swing.JFrame {
                 "Id", "Nombre", "App", "Apm", "Nacimiento", "Ingreso", "Contrato", "Rol", "Estado", "Foto"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableInstructures);
 
         btnCancelarAdministracion.setBackground(new java.awt.Color(255, 10, 84));
         btnCancelarAdministracion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -100,6 +163,11 @@ public class AdministracionInstructores extends javax.swing.JFrame {
         btnCancelarAdministracion.setText("Cancelar");
         btnCancelarAdministracion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancelarAdministracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarAdministracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancelarAdministracionMouseEntered(evt);
+            }
+        });
         btnCancelarAdministracion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarAdministracionActionPerformed(evt);
@@ -126,6 +194,14 @@ public class AdministracionInstructores extends javax.swing.JFrame {
         btnBuscarInstructores.setText("Buscar");
         btnBuscarInstructores.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBuscarInstructores.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarInstructores.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBuscarInstructoresMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarInstructoresMouseExited(evt);
+            }
+        });
 
         javax.swing.GroupLayout panelInstructoresLayout = new javax.swing.GroupLayout(panelInstructores);
         panelInstructores.setLayout(panelInstructoresLayout);
@@ -241,6 +317,26 @@ public class AdministracionInstructores extends javax.swing.JFrame {
         metodoAdminInstructores.guardarAdminInstructores();
     }//GEN-LAST:event_btnGuardarAdministracionActionPerformed
 
+    private void txtTipoContratoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTipoContratoMouseClicked
+        JOptionPane.showMessageDialog(null, "Campo no disponible en esta versión");
+    }//GEN-LAST:event_txtTipoContratoMouseClicked
+
+    private void txtTipoRolMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTipoRolMouseClicked
+        JOptionPane.showMessageDialog(null, "Campo no disponible en esta versión");
+    }//GEN-LAST:event_txtTipoRolMouseClicked
+
+    private void btnCancelarAdministracionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarAdministracionMouseEntered
+        JOptionPane.showConfirmDialog(null, "Botón bloqueado por falla en pruebas");
+    }//GEN-LAST:event_btnCancelarAdministracionMouseEntered
+
+    private void btnBuscarInstructoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarInstructoresMouseEntered
+        btnBuscarInstructores.setBackground(new Color(154, 3, 30));
+    }//GEN-LAST:event_btnBuscarInstructoresMouseEntered
+
+    private void btnBuscarInstructoresMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarInstructoresMouseExited
+        btnBuscarInstructores.setBackground(new Color(247,127,0));
+    }//GEN-LAST:event_btnBuscarInstructoresMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -289,9 +385,9 @@ public class AdministracionInstructores extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblIconCalendar;
     private javax.swing.JPanel panelInstructores;
+    private javax.swing.JTable tableInstructures;
     private javax.swing.JTextField txtBuscarInstructores;
     private javax.swing.JTextField txtTipoContrato;
     private javax.swing.JTextField txtTipoRol;

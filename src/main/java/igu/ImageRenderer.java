@@ -22,7 +22,6 @@ public class ImageRenderer extends DefaultTableCellRenderer {
             label.setIcon(null);
         }
         
-        // Estilo para selección
         if (isSelected) {
             label.setBackground(table.getSelectionBackground());
             label.setForeground(table.getSelectionForeground());

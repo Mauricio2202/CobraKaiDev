@@ -1,6 +1,7 @@
 
 package igu;
 
+import java.awt.Color;
 import java.awt.Image;
 import java.util.List;
 import javax.swing.ImageIcon;
@@ -73,6 +74,11 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
         jLabel6.setText("Rango Actual");
 
         cmbRangoActual.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        cmbRangoActual.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbRangoActualMouseClicked(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(242, 242, 242));
@@ -88,14 +94,26 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
         btnBuscarEstudiante.setText("Buscar");
         btnBuscarEstudiante.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnBuscarEstudiante.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnBuscarEstudiante.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnBuscarEstudianteMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBuscarEstudianteMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBuscarEstudianteMouseExited(evt);
+            }
+        });
         btnBuscarEstudiante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBuscarEstudianteActionPerformed(evt);
             }
         });
 
+        tblEvoEstudiante.setBackground(new java.awt.Color(0, 8, 20));
         tblEvoEstudiante.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        tblEvoEstudiante.setForeground(new java.awt.Color(73, 80, 87));
+        tblEvoEstudiante.setForeground(new java.awt.Color(255, 255, 255));
         tblEvoEstudiante.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -118,6 +136,11 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
         btnCancelarEvo.setText("Cancelar");
         btnCancelarEvo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancelarEvo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarEvo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancelarEvoMouseEntered(evt);
+            }
+        });
         btnCancelarEvo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarEvoActionPerformed(evt);
@@ -303,6 +326,26 @@ public class EvolucionEstudiante extends javax.swing.JFrame {
         ex.printStackTrace();
     }
     }//GEN-LAST:event_btnBuscarEstudianteActionPerformed
+
+    private void cmbRangoActualMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbRangoActualMouseClicked
+        JOptionPane.showMessageDialog(null, "Función no disponible en esta versión");
+    }//GEN-LAST:event_cmbRangoActualMouseClicked
+
+    private void btnCancelarEvoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarEvoMouseEntered
+        JOptionPane.showMessageDialog(null, "Botón bloqueado por falla en pruebas");
+    }//GEN-LAST:event_btnCancelarEvoMouseEntered
+
+    private void btnBuscarEstudianteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEstudianteMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnBuscarEstudianteMouseClicked
+
+    private void btnBuscarEstudianteMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEstudianteMouseEntered
+        btnBuscarEstudiante.setBackground(new Color(154, 3, 30));
+    }//GEN-LAST:event_btnBuscarEstudianteMouseEntered
+
+    private void btnBuscarEstudianteMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarEstudianteMouseExited
+        btnBuscarEstudiante.setBackground(new Color(247,127,0));
+    }//GEN-LAST:event_btnBuscarEstudianteMouseExited
 
     
     private void configurarTabla() {
