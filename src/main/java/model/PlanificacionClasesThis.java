@@ -3,7 +3,7 @@ package model;
 
 import java.time.LocalDate;
 
-public class PlanificacionClases {
+public class PlanificacionClasesThis {
     private String nombreClase;
     private String instructorPresente;
     private String rolInstructor;
@@ -18,10 +18,10 @@ public class PlanificacionClases {
 
     private String reporteActividades;
 
-    public PlanificacionClases() {
+    public PlanificacionClasesThis() {
     }
 
-    public PlanificacionClases(String nombreClase, String instructorPresente, String rolInstructor, String nivelTecnico, String modalidad, LocalDate fechaClase, boolean asistenciaConfirmada, String estado, int cantidadMaxPersonas, String reporteActividades) {
+    public PlanificacionClasesThis(String nombreClase, String instructorPresente, String rolInstructor, String nivelTecnico, String modalidad, LocalDate fechaClase, boolean asistenciaConfirmada, String estado, int cantidadMaxPersonas, String reporteActividades) {
         this.nombreClase = nombreClase;
         this.instructorPresente = instructorPresente;
         this.rolInstructor = rolInstructor;

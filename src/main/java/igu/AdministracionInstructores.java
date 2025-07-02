@@ -326,7 +326,7 @@ public class AdministracionInstructores extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTipoRolMouseClicked
 
     private void btnCancelarAdministracionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarAdministracionMouseEntered
-        JOptionPane.showConfirmDialog(null, "Botón bloqueado por falla en pruebas");
+        JOptionPane.showMessageDialog(null, "Botón bloqueado por falla en pruebas");
     }//GEN-LAST:event_btnCancelarAdministracionMouseEntered
 
     private void btnBuscarInstructoresMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBuscarInstructoresMouseEntered

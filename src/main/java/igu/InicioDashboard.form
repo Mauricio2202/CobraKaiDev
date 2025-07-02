@@ -108,7 +108,7 @@
                               <Component id="btnIntoPlanificacion" min="-2" pref="195" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnIntoGestionEspacios" min="-2" pref="195" max="-2" attributes="0"/>
+                              <Component id="btnIntoEvaluacionRango" min="-2" pref="195" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnIntoFinanzas" min="-2" pref="195" max="-2" attributes="0"/>
                           </Group>
@@ -122,7 +122,7 @@
                               <Component id="btnIntoEstadistica" min="-2" pref="195" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="btnIntoEvaluacionRango" min="-2" pref="195" max="-2" attributes="0"/>
+                              <Component id="btnIntoGestionEspacios" min="-2" pref="195" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="btnIntoGestionTorneo" min="-2" pref="195" max="-2" attributes="0"/>
                           </Group>
@@ -146,13 +146,13 @@
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="btnIntoEvaluacionRango" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                           <Component id="btnIntoGestionTorneo" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="btnIntoGestionEspacios" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="btnIntoFinanzas" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
-                          <Component id="btnIntoGestionEspacios" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
+                          <Component id="btnIntoEvaluacionRango" alignment="3" min="-2" pref="43" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">

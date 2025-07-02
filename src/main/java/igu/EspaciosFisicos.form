@@ -63,13 +63,13 @@
                                   <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
                                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="cmbInstructorPresente" min="-2" pref="160" max="-2" attributes="0"/>
+                                  <Component id="cmbTipoEspacio" min="-2" pref="160" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                   <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="lblCantidadPersonas" min="-2" pref="30" max="-2" attributes="0"/>
+                          <Component id="lblCapacidadPersonas" min="-2" pref="30" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="btnDisminuirG" alignment="0" max="32767" attributes="0"/>
@@ -106,10 +106,10 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cmbInstructorPresente" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cmbTipoEspacio" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="lblCantidadPersonas" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
+                              <Component id="lblCapacidadPersonas" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -156,7 +156,7 @@
             <Property name="text" type="java.lang.String" value="Tipo de Espacio"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="cmbInstructorPresente">
+        <Component class="javax.swing.JComboBox" name="cmbTipoEspacio">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="STXihei" size="12" style="0"/>
@@ -198,11 +198,11 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTextArea" name="txtReporteActividad">
+            <Component class="javax.swing.JTextArea" name="txtCaracteristicas">
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                  <Font name="STXihei" size="12" style="1"/>
+                  <Font name="STXihei" size="18" style="1"/>
                 </Property>
                 <Property name="rows" type="int" value="5"/>
               </Properties>
@@ -231,6 +231,8 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCancelarGestionMouseClicked"/>
+            <EventHandler event="mouseEntered" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnCancelarGestionMouseEntered"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCancelarGestionActionPerformed"/>
           </Events>
         </Component>
@@ -256,6 +258,7 @@
             </Property>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnGuardarGestionMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGuardarGestionActionPerformed"/>
           </Events>
         </Component>
@@ -272,6 +275,9 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIncrementarGActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnDisminuirG">
           <Properties>
@@ -287,10 +293,10 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="lblCantidadPersonas">
+        <Component class="javax.swing.JLabel" name="lblCapacidadPersonas">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="STXihei" size="12" style="0"/>
+              <Font name="STXihei" size="18" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="dd" green="dd" red="dd" type="rgb"/>

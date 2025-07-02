@@ -4,7 +4,11 @@
  */
 package igu;
 
+import java.util.Map;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import model.EspaciosFisicosThis;
 import persistence.EspaciosFisicosDAO;
 
 /**
@@ -13,6 +17,8 @@ import persistence.EspaciosFisicosDAO;
  */
 public class EspaciosFisicos extends javax.swing.JFrame {
 
+    private int capacidadPersonas = 0;
+    private final EspaciosFisicosDAO dao = new EspaciosFisicosDAO();
     /**
      * Creates new form EspaciosFisicos
      */
@@ -20,7 +26,46 @@ public class EspaciosFisicos extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    
+        btnIncrementarG.addActionListener(this::btnIncrementarGActionPerformed);
+        btnDisminuirG.addActionListener(this::btnDisminuirGActionPerformed);
+    
+        cargarClasesPlanificadas();
+        actualizarCapacidad();
     }
+    
+    private void cargarClasesPlanificadas() {
+    Map<String, String> clases = dao.obtenerClasesPlanificadas();
+    DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
+    
+    modelo.addElement("Dojo Fénix");
+    
+    clases.keySet().forEach(modelo::addElement);
+    
+    cmbTipoEspacio.setModel(modelo);
+    
+    cmbTipoEspacio.addActionListener(e -> {
+        txtCaracteristicas.setText("Por el momento no hay reporte que se tenga que enviar");
+    });
+    
+    txtCaracteristicas.setText("Por el momento no hay reporte que se tenga que enviar");
+}
+    
+    private void actualizarCapacidad() {
+        lblCapacidadPersonas.setText(String.valueOf(capacidadPersonas));
+    }
+    
+    private void btnIncrementarGActionPerformed(java.awt.event.ActionEvent evt) {                                               
+        capacidadPersonas++;
+        actualizarCapacidad();
+    }                                              
+
+    private void btnDisminuirGActionPerformed(java.awt.event.ActionEvent evt) {                                              
+        if (capacidadPersonas > 0) {
+        capacidadPersonas--;
+        actualizarCapacidad();
+        }
+    }      
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,16 +79,16 @@ public class EspaciosFisicos extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        cmbInstructorPresente = new javax.swing.JComboBox<>();
+        cmbTipoEspacio = new javax.swing.JComboBox<>();
         jLabel6 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        txtReporteActividad = new javax.swing.JTextArea();
+        txtCaracteristicas = new javax.swing.JTextArea();
         btnCancelarGestion = new javax.swing.JButton();
         btnGuardarGestion = new javax.swing.JButton();
         btnIncrementarG = new javax.swing.JButton();
         btnDisminuirG = new javax.swing.JButton();
-        lblCantidadPersonas = new javax.swing.JLabel();
+        lblCapacidadPersonas = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,7 +102,7 @@ public class EspaciosFisicos extends javax.swing.JFrame {
         jLabel5.setForeground(new java.awt.Color(73, 80, 87));
         jLabel5.setText("Tipo de Espacio");
 
-        cmbInstructorPresente.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        cmbTipoEspacio.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(73, 80, 87));
@@ -67,10 +112,10 @@ public class EspaciosFisicos extends javax.swing.JFrame {
         jLabel13.setForeground(new java.awt.Color(73, 80, 87));
         jLabel13.setText("Características del Espacio");
 
-        txtReporteActividad.setColumns(20);
-        txtReporteActividad.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
-        txtReporteActividad.setRows(5);
-        jScrollPane1.setViewportView(txtReporteActividad);
+        txtCaracteristicas.setColumns(20);
+        txtCaracteristicas.setFont(new java.awt.Font("STXihei", 1, 18)); // NOI18N
+        txtCaracteristicas.setRows(5);
+        jScrollPane1.setViewportView(txtCaracteristicas);
 
         btnCancelarGestion.setBackground(new java.awt.Color(255, 10, 84));
         btnCancelarGestion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -78,6 +123,14 @@ public class EspaciosFisicos extends javax.swing.JFrame {
         btnCancelarGestion.setText("Cancelar");
         btnCancelarGestion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnCancelarGestion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnCancelarGestion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCancelarGestionMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCancelarGestionMouseEntered(evt);
+            }
+        });
         btnCancelarGestion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarGestionActionPerformed(evt);
@@ -90,6 +143,11 @@ public class EspaciosFisicos extends javax.swing.JFrame {
         btnGuardarGestion.setText("Guardar");
         btnGuardarGestion.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         btnGuardarGestion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnGuardarGestion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuardarGestionMouseClicked(evt);
+            }
+        });
         btnGuardarGestion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnGuardarGestionActionPerformed(evt);
@@ -100,15 +158,20 @@ public class EspaciosFisicos extends javax.swing.JFrame {
         btnIncrementarG.setForeground(new java.awt.Color(255, 255, 255));
         btnIncrementarG.setText("Ʌ");
         btnIncrementarG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnIncrementarG.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIncrementarGActionPerformed(evt);
+            }
+        });
 
         btnDisminuirG.setBackground(new java.awt.Color(247, 127, 0));
         btnDisminuirG.setForeground(new java.awt.Color(255, 255, 255));
         btnDisminuirG.setText("V");
         btnDisminuirG.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        lblCantidadPersonas.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
-        lblCantidadPersonas.setForeground(new java.awt.Color(221, 221, 221));
-        lblCantidadPersonas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        lblCapacidadPersonas.setFont(new java.awt.Font("STXihei", 1, 18)); // NOI18N
+        lblCapacidadPersonas.setForeground(new java.awt.Color(221, 221, 221));
+        lblCapacidadPersonas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -125,11 +188,11 @@ public class EspaciosFisicos extends javax.swing.JFrame {
                                 .addGap(69, 69, 69)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbInstructorPresente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbTipoEspacio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(26, 26, 26)
                                 .addComponent(jLabel6)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblCantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblCapacidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(btnDisminuirG, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -158,9 +221,9 @@ public class EspaciosFisicos extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel5)
-                                .addComponent(cmbInstructorPresente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmbTipoEspacio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel6))
-                            .addComponent(lblCantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblCapacidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(btnIncrementarG)
@@ -198,15 +261,44 @@ public class EspaciosFisicos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarGestionActionPerformed
-        // Aquí debe ir una conexión directa a base de datos y realizar el registro de estudiante
-        EspaciosFisicosDAO metodoEspaciosFisicos = new EspaciosFisicosDAO();
-        metodoEspaciosFisicos.guardarEspacio();
+        if (cmbTipoEspacio.getSelectedItem() == null || txtCaracteristicas.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, 
+                "Complete todos los campos obligatorios", 
+                "Error", 
+                JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        EspaciosFisicosThis espacio = new EspaciosFisicosThis(
+            (String) cmbTipoEspacio.getSelectedItem(),
+            capacidadPersonas,
+            txtCaracteristicas.getText()
+        );
+        
+        dao.guardarEspacio(espacio);
     }//GEN-LAST:event_btnGuardarGestionActionPerformed
 
     private void btnCancelarGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarGestionActionPerformed
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_btnCancelarGestionActionPerformed
+/*
+    private void btnIncrementarGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIncrementarGActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnIncrementarGActionPerformed
+*/
+    private void btnCancelarGestionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarGestionMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCancelarGestionMouseClicked
 
+    private void btnCancelarGestionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCancelarGestionMouseEntered
+        JOptionPane.showMessageDialog(null, "Botón bloqueado por falla en pruebas");
+    }//GEN-LAST:event_btnCancelarGestionMouseEntered
+
+    private void btnGuardarGestionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarGestionMouseClicked
+        JOptionPane.showMessageDialog(null, "Botón no funcional por falla en pruebas");
+    }//GEN-LAST:event_btnGuardarGestionMouseClicked
+
+    
     /**
      * @param args the command line arguments
      */
@@ -247,14 +339,14 @@ public class EspaciosFisicos extends javax.swing.JFrame {
     private javax.swing.JButton btnDisminuirG;
     private javax.swing.JButton btnGuardarGestion;
     private javax.swing.JButton btnIncrementarG;
-    private javax.swing.JComboBox<String> cmbInstructorPresente;
+    private javax.swing.JComboBox<String> cmbTipoEspacio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCantidadPersonas;
-    private javax.swing.JTextArea txtReporteActividad;
+    private javax.swing.JLabel lblCapacidadPersonas;
+    private javax.swing.JTextArea txtCaracteristicas;
     // End of variables declaration//GEN-END:variables
 }

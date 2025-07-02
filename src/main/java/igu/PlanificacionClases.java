@@ -4,7 +4,12 @@
  */
 package igu;
 
+import java.time.ZoneId;
+import java.util.Map;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import model.PlanificacionClasesThis;
 import persistence.PlanificacionClasesDAO;
 
 /**
@@ -12,16 +17,71 @@ import persistence.PlanificacionClasesDAO;
  * @author 52551
  */
 public class PlanificacionClases extends javax.swing.JFrame {
+    
+    private int cantidadPersonas = 0;
+    private final PlanificacionClasesDAO dao = new PlanificacionClasesDAO();
+    
+    private static final int MAX_PERSONAS = 50;
 
-    /**
-     * Creates new form PlanificacionClases
-     */
+
     public PlanificacionClases() {
         initComponents();
         this.setLocationRelativeTo(null);
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        cargarCombos();
+        actualizarCantidadPersonas();
+        
+        btnIncrementarPersonas.addActionListener(this::btnIncrementarPersonasActionPerformed);
+        btnDisminuirPersonas.addActionListener(this::btnDisminuirPersonasActionPerformed);
+    
+        actualizarCantidadPersonas();
     }
 
+    private void cargarCombos() {
+        Map<Integer, String> instructores = dao.obtenerInstructores();
+        DefaultComboBoxModel<String> modeloInstructores = new DefaultComboBoxModel<>();
+        instructores.values().forEach(modeloInstructores::addElement);
+        cmbInstructorPresente.setModel(modeloInstructores);
+        
+        Map<Integer, String> niveles = dao.obtenerNivelesTecnicos();
+        DefaultComboBoxModel<String> modeloNiveles = new DefaultComboBoxModel<>();
+        niveles.values().forEach(modeloNiveles::addElement);
+        cmbNivelTecnico.setModel(modeloNiveles);
+        
+        Map<Integer, String> modalidades = dao.obtenerModalidades();
+        DefaultComboBoxModel<String> modeloModalidades = new DefaultComboBoxModel<>();
+        modalidades.values().forEach(modeloModalidades::addElement);
+        cmbModalidad.setModel(modeloModalidades);
+        
+        DefaultComboBoxModel<String> modeloEstados = new DefaultComboBoxModel<>();
+        dao.obtenerEstados().forEach(modeloEstados::addElement);
+        cmbEstado.setModel(modeloEstados);
+    }
+    
+    private void actualizarCantidadPersonas() {
+        lblCantidadPersonas.setText(String.valueOf(cantidadPersonas));
+    }
+    
+    private void btnIncrementarPersonasActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+        if (cantidadPersonas < MAX_PERSONAS) {
+            cantidadPersonas++;
+            actualizarCantidadPersonas();
+        } else {
+        JOptionPane.showMessageDialog(this, 
+            "La capacidad máxima es " + MAX_PERSONAS, 
+            "Límite alcanzado", 
+            JOptionPane.WARNING_MESSAGE);
+        }
+    }    
+    
+    private void btnDisminuirPersonasActionPerformed(java.awt.event.ActionEvent evt) {                                                      
+        if (cantidadPersonas > 0) {
+            cantidadPersonas--;
+            actualizarCantidadPersonas();
+        }
+    }     
+ 
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +104,7 @@ public class PlanificacionClases extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         cmbModalidad = new javax.swing.JComboBox<>();
         jLabel10 = new javax.swing.JLabel();
-        Estado = new javax.swing.JComboBox<>();
+        cmbEstado = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         lblCantidadPersonas = new javax.swing.JLabel();
         btnIncrementarPersonas = new javax.swing.JButton();
@@ -86,12 +146,22 @@ public class PlanificacionClases extends javax.swing.JFrame {
         jLabel7.setText("Rol del Instructor");
 
         cmbRolInstructor.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        cmbRolInstructor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cmbRolInstructorMouseClicked(evt);
+            }
+        });
 
         jLabel8.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(73, 80, 87));
         jLabel8.setText("Nivel Técnico");
 
         cmbNivelTecnico.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        cmbNivelTecnico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbNivelTecnicoActionPerformed(evt);
+            }
+        });
 
         jLabel9.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(73, 80, 87));
@@ -103,13 +173,13 @@ public class PlanificacionClases extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(73, 80, 87));
         jLabel10.setText("Capacidad Máxima de Personas");
 
-        Estado.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        cmbEstado.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(73, 80, 87));
         jLabel11.setText("Estado");
 
-        lblCantidadPersonas.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        lblCantidadPersonas.setFont(new java.awt.Font("STXihei", 1, 18)); // NOI18N
         lblCantidadPersonas.setForeground(new java.awt.Color(221, 221, 221));
         lblCantidadPersonas.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -136,6 +206,11 @@ public class PlanificacionClases extends javax.swing.JFrame {
         jLabel13.setText("Reporte de Actividades");
 
         txtAsistenciaConfirmada.setFont(new java.awt.Font("STXihei", 0, 12)); // NOI18N
+        txtAsistenciaConfirmada.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                txtAsistenciaConfirmadaMouseEntered(evt);
+            }
+        });
 
         jLabel14.setFont(new java.awt.Font("STXihei", 1, 12)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(73, 80, 87));
@@ -186,56 +261,61 @@ public class PlanificacionClases extends javax.swing.JFrame {
                                 .addComponent(btnCancelarPlanificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnGuardarPlanificacion, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(jLabel5)
-                                    .addGap(55, 55, 55)
-                                    .addComponent(jLabel6)
-                                    .addGap(71, 71, 71)
-                                    .addComponent(jLabel7)
-                                    .addGap(76, 76, 76)
-                                    .addComponent(jLabel8))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtNombreClase, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel9))
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(18, 18, 18)
-                                            .addComponent(cmbInstructorPresente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(cmbRolInstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                            .addComponent(cmbNivelTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addGap(21, 21, 21)
-                                            .addComponent(jLabel11)
-                                            .addGap(338, 338, 338)
-                                            .addComponent(lblCantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                                .addComponent(btnDisminuirPersonas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(btnIncrementarPersonas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addComponent(cmbModalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(Estado, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(jLabel10))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel12)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                            .addComponent(dtFechaClase, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                            .addComponent(lblIconCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addComponent(jLabel13))
-                                    .addGap(27, 27, 27)
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(txtAsistenciaConfirmada, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel14)))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(28, Short.MAX_VALUE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel5)
+                                        .addGap(55, 55, 55)
+                                        .addComponent(jLabel6)
+                                        .addGap(71, 71, 71)
+                                        .addComponent(jLabel7)
+                                        .addGap(76, 76, 76)
+                                        .addComponent(jLabel8))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtNombreClase, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel9))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(21, 21, 21)
+                                                .addComponent(jLabel11))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(18, 18, 18)
+                                                .addComponent(cmbInstructorPresente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(cmbRolInstructor, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(44, 44, 44)
+                                                .addComponent(lblCantidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addComponent(btnDisminuirPersonas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                    .addComponent(btnIncrementarPersonas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addGap(33, 33, 33)
+                                                .addComponent(cmbNivelTecnico, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(cmbModalidad, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jLabel10))
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel12)
+                                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                                .addComponent(dtFechaClase, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(lblIconCalendar, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel13))
+                                        .addGap(27, 27, 27)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(txtAsistenciaConfirmada, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel14)))
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 709, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(2, 2, 2)))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -266,7 +346,7 @@ public class PlanificacionClases extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                         .addComponent(cmbModalidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(Estado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(cmbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGroup(jPanel1Layout.createSequentialGroup()
                                     .addGap(1, 1, 1)
                                     .addComponent(jLabel10))))
@@ -322,10 +402,48 @@ public class PlanificacionClases extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarPlanificacionActionPerformed
 
     private void btnGuardarPlanificacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarPlanificacionActionPerformed
-       // Aquí debe ir una conexión directa a base de datos y realizar el registro de estudiante
-       PlanificacionClasesDAO metodoGuardarPlanificacion = new PlanificacionClasesDAO();
-       metodoGuardarPlanificacion.guardarPlanificacion();
+        if (txtNombreClase.getText().isEmpty() || 
+        cmbInstructorPresente.getSelectedItem() == null ||
+        cmbNivelTecnico.getSelectedItem() == null ||
+        cmbModalidad.getSelectedItem() == null ||
+        dtFechaClase.getDate() == null ||
+        cmbEstado.getSelectedItem() == null) {
+        
+        JOptionPane.showMessageDialog(this, 
+            "Complete todos los campos obligatorios", 
+            "Error", 
+            JOptionPane.ERROR_MESSAGE);
+        return;
+    }
+
+    PlanificacionClasesThis planificacion = new PlanificacionClasesThis(
+        txtNombreClase.getText(),
+        (String) cmbInstructorPresente.getSelectedItem(),
+        "", // Rol instructor no se usa
+        (String) cmbNivelTecnico.getSelectedItem(),
+        (String) cmbModalidad.getSelectedItem(),
+        dtFechaClase.getDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate(),
+        false, // Asistencia confirmada no se usa
+        (String) cmbEstado.getSelectedItem(),
+        cantidadPersonas,
+        txtReporteActividad.getText()
+    );
+
+    // Guardar en la base de datos
+    dao.guardarPlanificacion(planificacion);
     }//GEN-LAST:event_btnGuardarPlanificacionActionPerformed
+
+    private void cmbNivelTecnicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbNivelTecnicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbNivelTecnicoActionPerformed
+
+    private void cmbRolInstructorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cmbRolInstructorMouseClicked
+        JOptionPane.showMessageDialog(null, "Campo no disponible en esta versión");
+    }//GEN-LAST:event_cmbRolInstructorMouseClicked
+
+    private void txtAsistenciaConfirmadaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtAsistenciaConfirmadaMouseEntered
+        JOptionPane.showMessageDialog(null, "Campo no disponible en esta versión");
+    }//GEN-LAST:event_txtAsistenciaConfirmadaMouseEntered
 
     /**
      * @param args the command line arguments
@@ -363,11 +481,11 @@ public class PlanificacionClases extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> Estado;
     private javax.swing.JButton btnCancelarPlanificacion;
     private javax.swing.JButton btnDisminuirPersonas;
     private javax.swing.JButton btnGuardarPlanificacion;
     private javax.swing.JButton btnIncrementarPersonas;
+    private javax.swing.JComboBox<String> cmbEstado;
     private javax.swing.JComboBox<String> cmbInstructorPresente;
     private javax.swing.JComboBox<String> cmbModalidad;
     private javax.swing.JComboBox<String> cmbNivelTecnico;

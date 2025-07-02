@@ -5,15 +5,15 @@ package model;
  *
  * @author 52551
  */
-public class EspaciosFisicos {
+public class EspaciosFisicosThis {
     private String tipoEspacio;
     private int capacidadPersonas;
     private String caracteristicasEspacio;
 
-    public EspaciosFisicos() {
+    public EspaciosFisicosThis() {
     }
 
-    public EspaciosFisicos(String tipoEspacio, int capacidadPersonas, String caracteristicasEspacio) {
+    public EspaciosFisicosThis(String tipoEspacio, int capacidadPersonas, String caracteristicasEspacio) {
         this.tipoEspacio = tipoEspacio;
         this.capacidadPersonas = capacidadPersonas;
         this.caracteristicasEspacio = caracteristicasEspacio;
