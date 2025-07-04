@@ -14,14 +14,21 @@ public class EspaciosFisicosDAO {
     
    public Map<String, String> obtenerClasesPlanificadas() {
     Map<String, String> clases = new HashMap<>();
-    String sql = "SELECT DISTINCT nombre_clase FROM planificacion_clases";
-    
+    String sql = "SELECT nombre_clase, reporte_actividades FROM planificacion_clases";
+
     try (Connection con = Conexion.getConexion();
          PreparedStatement ps = con.prepareStatement(sql);
          ResultSet rs = ps.executeQuery()) {
-        
+
         while (rs.next()) {
-            clases.put(rs.getString("nombre_clase"), "Por el momento no hay reporte que se tenga que enviar");
+            String nombreClase = rs.getString("nombre_clase");
+            String reporte = rs.getString("reporte_actividades");
+
+            if (reporte == null || reporte.trim().isEmpty()) {
+                reporte = "Por el momento no hay reporte que se tenga que enviar";
+            }
+
+            clases.put(nombreClase, reporte);
         }
     } catch (SQLException e) {
         JOptionPane.showMessageDialog(null, 
@@ -29,8 +36,12 @@ public class EspaciosFisicosDAO {
             "Error", 
             JOptionPane.ERROR_MESSAGE);
     }
+
     return clases;
 }
+
+   
+   
     
     public void guardarEspacio(model.EspaciosFisicosThis espacio) {
         String sql = "INSERT INTO espacios_fisicos (tipo_espacio, capacidad, caracteristicas) VALUES (?, ?, ?)";
@@ -56,4 +67,5 @@ public class EspaciosFisicosDAO {
                 JOptionPane.ERROR_MESSAGE);
         }
     }
+    
 }

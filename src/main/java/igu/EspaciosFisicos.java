@@ -4,6 +4,7 @@
  */
 package igu;
 
+import java.util.HashMap;
 import java.util.Map;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFrame;
@@ -19,6 +20,8 @@ public class EspaciosFisicos extends javax.swing.JFrame {
 
     private int capacidadPersonas = 0;
     private final EspaciosFisicosDAO dao = new EspaciosFisicosDAO();
+    private Map<String, String> clasesPlanificadas = new HashMap<>();
+
     /**
      * Creates new form EspaciosFisicos
      */
@@ -35,21 +38,29 @@ public class EspaciosFisicos extends javax.swing.JFrame {
     }
     
     private void cargarClasesPlanificadas() {
-    Map<String, String> clases = dao.obtenerClasesPlanificadas();
+    clasesPlanificadas = dao.obtenerClasesPlanificadas();
+
+    for (Map.Entry<String, String> entry : clasesPlanificadas.entrySet()) {
+        System.out.println("Clase: " + entry.getKey() + " -> Reporte: " + entry.getValue());
+    }
+
     DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>();
-    
     modelo.addElement("Dojo Fénix");
     
-    clases.keySet().forEach(modelo::addElement);
-    
+    clasesPlanificadas.keySet().forEach(modelo::addElement);
     cmbTipoEspacio.setModel(modelo);
-    
+
     cmbTipoEspacio.addActionListener(e -> {
-        txtCaracteristicas.setText("Por el momento no hay reporte que se tenga que enviar");
+        String seleccionado = (String) cmbTipoEspacio.getSelectedItem();
+        String descripcion = clasesPlanificadas.getOrDefault(seleccionado, "Por el momento no hay reporte que se tenga que enviar");
+        txtCaracteristicas.setText(descripcion);
+        System.out.println("Seleccionado: " + seleccionado + " -> Texto mostrado: " + descripcion);
     });
-    
+
     txtCaracteristicas.setText("Por el momento no hay reporte que se tenga que enviar");
 }
+
+
     
     private void actualizarCapacidad() {
         lblCapacidadPersonas.setText(String.valueOf(capacidadPersonas));
@@ -180,17 +191,12 @@ public class EspaciosFisicos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(153, 153, 153)
-                                .addComponent(jLabel1))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(69, 69, 69)
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(cmbTipoEspacio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(26, 26, 26)
-                                .addComponent(jLabel6)))
+                        .addGap(69, 69, 69)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmbTipoEspacio, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblCapacidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -205,18 +211,23 @@ public class EspaciosFisicos extends javax.swing.JFrame {
                 .addContainerGap(54, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnCancelarGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnGuardarGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnCancelarGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnGuardarGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(214, 214, 214))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -225,15 +236,15 @@ public class EspaciosFisicos extends javax.swing.JFrame {
                                 .addComponent(jLabel6))
                             .addComponent(lblCapacidadPersonas, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
+                        .addGap(4, 4, 4)
                         .addComponent(btnIncrementarG)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDisminuirG)))
-                .addGap(46, 46, 46)
+                .addGap(61, 61, 61)
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelarGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnGuardarGestion, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
